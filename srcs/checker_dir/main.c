@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 13:22:25 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/01 22:02:32 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/01 22:45:48 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ int			main(int argc, char **argv)
 		return (1);
 	}
 	ft_process_sort(&stack_a, &stack_b, instructions);
-	ft_printf("\nSTACK_A :\n");
 	ft_lstiter(stack_a, &ft_lstprint_int);
-	ft_printf("\n\nSTACK_B :\n");
+	ft_printf("STACK_A :\n\n");
 	ft_lstiter(stack_b, &ft_lstprint_int);
+	ft_printf("STACK_B :\n");
 }

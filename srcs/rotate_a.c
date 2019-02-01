@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 13:43:11 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/01 21:53:11 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/01 22:42:45 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,17 @@
 
 void	ft_rotate_a(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*before_last;
 	t_list	*last;
 	t_list	*second;
 
 	(void)stack_b;
+	if (*stack_a == NULL || (*stack_a)->next == NULL)
+		return ;
 	second = (*stack_a)->next;
-	before_last = *stack_a;
-	while (before_last->next->next != NULL)
-		before_last = before_last->next;
-	last = before_last->next;
+	last = *stack_a;
+	while (last->next != NULL)
+		last = last->next;
 	(*stack_a)->next = NULL;
-	before_last->next = *stack_a;
-	last->next = second;
-	*stack_a = last;
+	last->next = *stack_a;
+	*stack_a = second;
 }
