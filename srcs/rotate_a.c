@@ -6,20 +6,20 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 13:43:11 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/01 22:42:45 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/02 17:02:10 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ft_rotate_a(t_list **stack_a, t_list **stack_b)
+char	*ft_rotate_a(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*last;
 	t_list	*second;
 
 	(void)stack_b;
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
-		return ;
+		return ("RA appelle alors que nul");
 	second = (*stack_a)->next;
 	last = *stack_a;
 	while (last->next != NULL)
@@ -27,4 +27,5 @@ void	ft_rotate_a(t_list **stack_a, t_list **stack_b)
 	(*stack_a)->next = NULL;
 	last->next = *stack_a;
 	*stack_a = second;
+	return ("ra");
 }

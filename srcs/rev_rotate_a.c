@@ -6,20 +6,20 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 13:44:05 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/01 22:42:55 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/02 17:07:19 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
 
-void	ft_rev_rotate_a(t_list **stack_a, t_list **stack_b)
+char	*ft_rev_rotate_a(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*before_last;
 	t_list	*last;
 
 	(void)stack_b;
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
-		return ;
+		return ("rra appelle alors que vide");
 	before_last = *stack_a;
 	while (before_last->next->next != NULL)
 		before_last = before_last->next;
@@ -27,4 +27,5 @@ void	ft_rev_rotate_a(t_list **stack_a, t_list **stack_b)
 	before_last->next = NULL;
 	last->next = *stack_a;
 	*stack_a = last;
+	return ("rra");
 }

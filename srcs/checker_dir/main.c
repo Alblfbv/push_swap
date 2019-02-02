@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 13:22:25 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/01 22:45:48 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/02 18:33:33 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,19 @@ void		ft_process_sort(t_list **s_a, t_list **s_b, char **instructions)
 	ft_del_fptr(instruct);
 }
 
+static int	ft_is_sorted(t_list *stack_a, t_list *stack_b)
+{
+	if (stack_b != NULL)
+		return (-1);
+	while (stack_a->next->next != NULL)
+	{
+		if (*(int*)stack_a->content > *(int*)stack_a->next->content)
+			return (-1);
+		stack_a = stack_a->next;
+	}
+	return (1);
+}
+
 int			main(int argc, char **argv)
 {
 	t_list		*stack_a;
@@ -93,17 +106,18 @@ int			main(int argc, char **argv)
 		return (0);
 	if (!(instructions = ft_store_instructions()))
 	{
-		ft_putstr("usage: instructions | ./checker intlist");
+		ft_printf("Error\n");
 		return (1);
 	}
 	if (ft_stack_create(&stack_a, argv + 1, argc -1) == -1)
 	{
-		ft_putstr("usage: instructions | ./checker intlist");
+		ft_printf("Error\n");
 		return (1);
 	}
 	ft_process_sort(&stack_a, &stack_b, instructions);
-	ft_lstiter(stack_a, &ft_lstprint_int);
-	ft_printf("STACK_A :\n\n");
-	ft_lstiter(stack_b, &ft_lstprint_int);
-	ft_printf("STACK_B :\n");
+	if (ft_is_sorted(stack_a, stack_b) == -1)
+		ft_printf("KO\n");
+	else
+		ft_printf("OK\n");
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/02/01 15:18:02 by allefebv         ###   ########.fr        #
+#    Updated: 2019/02/01 23:18:30 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,7 @@ INCLUDES	=	./includes
 CC			=	gcc
 CFLAGS		=	-Wall -Wextra -I $(INCLUDES)
 
-SRC		=		srcs/create_stacks.c		\
-				srcs/store_instructions.c	\
+SRC			=	srcs/create_stacks.c		\
 				srcs/push_a.c				\
 				srcs/push_b.c				\
 				srcs/swap_a.c				\
@@ -30,15 +29,25 @@ SRC		=		srcs/create_stacks.c		\
 				srcs/rev_rotate_a.c			\
 				srcs/rev_rotate_b.c			\
 				srcs/rev_rotate_ab.c		\
+
+SRCCHECK	=	srcs/store_instructions.c	\
 				srcs/checker_dir/main.c
 
-OBJ		=	$(SRC:.c=.o)
+SRCPUSHSW	=	srcs/push_swap_dir/main.c
 
-all: $(CHECKER)
+OBJ			=	$(SRC:.c=.o)
+OBJCHECK	=	$(SRCCHECK:.c=.o)
+OBJPUSHSW	=	$(SRCPUSHSW:.c=.o)
 
-$(CHECKER): $(OBJ) libft
-	$(CC) $(CFLAGS) $(OBJ) -o $(CHECKER) $(LIB)
-	echo "made project"
+all: $(PUSH_SWAP) $(CHECKER)
+
+$(PUSH_SWAP): $(OBJPUSHSW) $(OBJ) libft
+	$(CC) $(CFLAGS) $(OBJPUSHSW) $(OBJ) -o $(PUSH_SWAP) $(LIB)
+	echo "made push_swap"
+
+$(CHECKER): $(OBJCHECK) $(OBJ) libft
+	$(CC) $(CFLAGS) $(OBJCHECK) $(OBJ) -o $(CHECKER) $(LIB)
+	echo "made checker"
 
 libft:
 	make -C libft -f libft.mk
@@ -46,15 +55,18 @@ libft:
 clean:
 	make -C libft -f libft.mk clean
 	$(RM) $(OBJ)
+	$(RM) $(OBJCHECK)
+	$(RM) $(OBJPUSHSW)
 	echo "cleaned project push_swap"
 
 
 fclean: clean
 	make -C libft -f libft.mk fclean
 	$(RM) $(CHECKER)
+	$(RM) $(PUSH_SWAP)
 	echo "fcleaned project push_swap"
 
 re: fclean all
 
-.PHONY: all clean fclean re checker libft
-.SILENT: $(OBJ) all clean fclean re checker libft
+.PHONY: all clean fclean re push_swap libft
+.SILENT: $(OBJCHECK) $(OBJPUSHSW) $(OBJ) all clean fclean re checker push_swap libft

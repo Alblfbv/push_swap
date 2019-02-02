@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:47:20 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/01 22:56:13 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/02 16:16:03 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,48 @@ static int	ft_check_int(char *s)
 	return (1);
 }
 
-int		ft_stack_create(t_list **stack_a, char **s_str, int len)
+static int	ft_check_duplicates(t_list *stack_a)
+{
+	t_list *tmp;
+	while (stack_a->next != NULL)
+	{
+		tmp = stack_a->next;
+		while (tmp->next != NULL)
+		{
+			if (*(int*)(tmp->content) == *(int*)(stack_a->content))
+				return (-1);
+			tmp = tmp->next;
+		}
+		stack_a = stack_a->next;
+	}
+	return (1);
+}
+
+int		ft_stack_create(t_list **stack_a, char **va_arg, int len)
 {
 	int	i;
+	int	j;
 	int	*tmp;
+	char	**s_str;
 
 	i = 0;
 	tmp = (int*)malloc(sizeof(int));
 	while (i < len)
 	{
-		if (ft_check_int(s_str[i]) == -1)
-			return (-1);
-		*tmp = ft_atoi(s_str[i]);
-		ft_lstadd_end(stack_a, ft_lstnew(tmp, sizeof(int*)));
+		s_str = ft_strsplit(va_arg[i], ' ');
+		j = 0;
+		while (s_str[j] != 0)
+		{
+			if (ft_check_int(s_str[j]) == -1)
+				return (-1);
+			*tmp = ft_atoi(s_str[j]);
+			ft_lstadd_end(stack_a, ft_lstnew(tmp, sizeof(int*)));
+			j++;
+		}
 		i++;
 	}
+	if (ft_check_duplicates(*stack_a) == -1)
+		return (-1);
 	free(tmp);
 	return (0);
 }
