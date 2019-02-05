@@ -6,7 +6,7 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/02/01 23:18:30 by allefebv         ###   ########.fr        #
+#    Updated: 2019/02/05 18:51:06 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ PUSH_SWAP	=	push_swap
 LIB			=	./libft/libft.a
 INCLUDES	=	./includes
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -I $(INCLUDES)
+CFLAGS		=	-Wall -Wextra -I $(INCLUDES) -g3 -fsanitize=address
 
 SRC			=	srcs/create_stacks.c		\
 				srcs/push_a.c				\
@@ -33,7 +33,9 @@ SRC			=	srcs/create_stacks.c		\
 SRCCHECK	=	srcs/store_instructions.c	\
 				srcs/checker_dir/main.c
 
-SRCPUSHSW	=	srcs/push_swap_dir/main.c
+SRCPUSHSW	=	srcs/push_swap_dir/main.c			\
+				srcs/push_swap_dir/selection_sort.c	\
+				srcs/push_swap_dir/quick_sort.c		\
 
 OBJ			=	$(SRC:.c=.o)
 OBJCHECK	=	$(SRCCHECK:.c=.o)
