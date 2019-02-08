@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/05 18:45:29 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/07 20:04:19 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,11 @@
 
 typedef struct	s_struct
 {
-	int			p_b;
-	int			p_a;
-	int			r_a;
-	int			r_b;
-	int			rr_a;
-	int			rr_b;
-	char		call;
-	t_list		*sorted_part;
+	t_list		*rev_rotate_a;
+	t_list		*rev_rotate_b;
+	t_list		*push_b;
+	t_list		*push_a;
+	char		pivot;
 }				t_struct;
 
 
@@ -46,6 +43,6 @@ char		*ft_rev_rotate_b(t_list **stack_a, t_list **stack_b);
 char		*ft_rev_rotate_ab(t_list **stack_a, t_list **stack_b);
 
 void		ft_select_sort(t_list **s_a, t_list **s_b, t_list **instructions);
-void		ft_quick_sort(t_list **s_a, t_list **s_b, t_list **instructions, t_struct *data);
+void		ft_quick_sort(t_list **s_a, t_list **s_b, t_list *start, t_list *end);
 
 #endif
