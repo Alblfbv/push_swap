@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:00:17 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/08 12:07:26 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/08 17:11:41 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		main(int argc, char **argv)
 		ft_printf("Error\n");
 		return (1);
 	}
-	ft_printf("LISTE INITIALE --- \n");
+	/*ft_printf("LISTE INITIALE --- \n");
 	if (stack_b != NULL)
 	{
 		ft_printf("Liste b :\n");
@@ -47,9 +47,20 @@ int		main(int argc, char **argv)
 	{
 		ft_printf("Liste a :\n");
 		ft_lstiter(stack_a, &ft_lstprint_int);
-	}
+	}*/
 
 	ft_find_instructions(&stack_a, &stack_b, &instructions);
+	/*if (stack_b != NULL)
+	{
+		ft_printf("Liste b :\n");
+		ft_lstiter(stack_b, &ft_lstprint_int);
+	}
+	if (stack_a != NULL)
+	{
+		ft_printf("Liste a :\n");
+		ft_lstiter(stack_a, &ft_lstprint_int);
+	}*/
+
 	//ft_lstiter(instructions, &ft_lstprint_str);
 	return (0);
 }
