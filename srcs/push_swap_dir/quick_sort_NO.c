@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 19:37:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/11 18:17:56 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/11 16:39:20 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,118 +22,135 @@ void	ft_init_data(t_struct *data)
 	data->first_run = 0;
 }
 
-t_struct	ft_pivot_a(t_list **s_a, t_list **s_b, t_list *end, t_struct *data)
+t_struct	ft_pivot_a(t_list **s_a, t_list **s_b, t_list *end)
 {
-	data->pivot = end;
-	ft_init_data(data);
-	data->first_run = 1;
-	data->list = 'A';
-	while (*s_a != data->pivot)
+	t_list		*pivot;
+	t_struct	data;
+
+	pivot = end;
+	ft_init_data(&data);
+	data.first_run = 1;
+	data.pivot = 'A';
+	while (*s_a != pivot)
 	{
-		if (*(int*)(*s_a)->content < *(int*)data->pivot->content)
+		if (*(int*)(*s_a)->content < *(int*)pivot->content)
 		{
 			ft_printf("%s\n", ft_push_b(s_a, s_b));
-			if (data->first_push == NULL)
-				data->first_push = *s_b;
+			if (data.first_push == NULL)
+				data.first_push = *s_b;
 		}
-		else if (*(int*)(*s_a)->content > *(int*)data->pivot->content)
+		else if (*(int*)(*s_a)->content > *(int*)pivot->content)
 			ft_printf("%s\n", ft_rotate_a(s_a, s_b));
 	}
 	ft_printf("%s\n", ft_push_b(s_a, s_b));
-	return (*data);
+	return (data);
 }
 
-t_struct	ft_pivot_b(t_list **s_a, t_list **s_b, t_list *end, t_struct *data)
+t_struct	ft_pivot_b(t_list **s_a, t_list **s_b, t_list *end)
 {
-	data->pivot = end;
-	ft_init_data(data);
-	data->list = 'A';
-	while (*s_a != data->pivot)
+	t_list		*pivot;
+	t_struct	data;
+	int			rotate_a;
+
+	pivot = end;
+	rotate_a = 0;
+	ft_init_data(&data);
+	data.pivot = 'A';
+	while (*s_a != pivot)
 	{
-		if (*(int*)(*s_a)->content < *(int*)data->pivot->content)
+		if (*(int*)(*s_a)->content < *(int*)pivot->content)
 		{
 			ft_printf("%s\n", ft_push_b(s_a, s_b));
-			if (data->first_push == NULL)
-				data->first_push = *s_b;
+			if (data.first_push == NULL)
+				data.first_push = *s_b;
 		}
-		else if (*(int*)(*s_a)->content > *(int*)data->pivot->content)
+		else if (*(int*)(*s_a)->content > *(int*)pivot->content)
 		{
 			ft_printf("%s\n", ft_rotate_a(s_a, s_b));
-			data->rotate = data->rotate + 1;
+			rotate_a++;
 		}
 	}
 	ft_printf("%s\n", ft_push_b(s_a, s_b));
-	if (data->rotate != 0)
-		data->first_rev_rotate = ft_lst_end(*s_a);
-	data->rotate = data->rotate + 1;
+	if (rotate_a != 0)
+		data.first_rev_rotate = ft_lst_end(*s_a);
+	rotate_a++;
 	if ((*s_a)->next != NULL)
-		while (--data->rotate)
+		while (--rotate_a)
 			ft_printf("%s\n", ft_rev_rotate_a(s_a, s_b));
-	return (*data);
+	return (data);
 }
 
-t_struct	ft_pivot_c(t_list **s_a, t_list **s_b,  t_list *end, t_struct *data)
+t_struct	ft_pivot_c(t_list **s_a, t_list **s_b,  t_list *end)
 {
-	data->pivot = end;
-	ft_init_data(data);
-	data->list = 'B';
+	t_list		*pivot;
+	t_struct	data;
+	int			rotate_b;
+
+	pivot = end;
+	rotate_b = 0;
+	ft_init_data(&data);
+	data.pivot = 'B';
 	ft_printf("%s\n", ft_push_a(s_a, s_b));
-	while (*s_b != data->pivot)
+	while (*s_b != pivot)
 	{
-		if (*(int*)(*s_b)->content > *(int*)data->pivot->content)
+		if (*(int*)(*s_b)->content > *(int*)pivot->content)
 		{
 			ft_printf("%s\n", ft_push_a(s_a, s_b));
-			if (data->first_push == NULL)
-				data->first_push = *s_a;
+			if (data.first_push == NULL)
+				data.first_push = *s_a;
 		}
-		else if (*(int*)(*s_b)->content < *(int*)data->pivot->content)
+		else if (*(int*)(*s_b)->content < *(int*)pivot->content)
 		{
 			ft_printf("%s\n", ft_rotate_b(s_a, s_b));
-			data->rotate = data->rotate + 1;
+			rotate_b++;
 		}
 	}
-	if (data->rotate != 0)
-		data->first_rev_rotate = ft_lst_end(*s_b);
-	data->rotate = data->rotate + 1;
-	if (data->rotate != 0)
+	if (rotate_b != 0)
+		data.first_rev_rotate = ft_lst_end(*s_b);
+	rotate_b++;
+	if (rotate_b)
 		ft_printf("%s\n", ft_push_a(s_a, s_b));
 	if ((*s_b) && (*s_b)->next != NULL)
-		if (data->rotate != 0)
+		if (rotate_b)
 		{
-			while (--data->rotate)
+			while (--rotate_b)
 				ft_printf("%s\n", ft_rev_rotate_b(s_a, s_b));
 			ft_printf("%s\n", ft_push_b(s_a, s_b));
 		}
-	return (*data);
+	return (data);
 }
 
 
 void	ft_quick_sort(t_list **s_a, t_list **s_b, t_list *start, t_list *end)
 {
 	t_struct	data;
+	t_list		*end_s_a;
 
+	if (*s_a)
+		end_s_a = ft_lst_end(*s_a);
+	ft_init_data(&data);
 	if (start != end)
 	{
 		//PIVOTS
-		if (start == *s_a && end == ft_lst_end(*s_a))
-			data = ft_pivot_a(s_a, s_b, end, &data);
-		else if (start == *s_a && end != ft_lst_end(*s_a))
-			data = ft_pivot_b(s_a, s_b, end, &data);
+		if (start == *s_a && end == end_s_a)
+			data = ft_pivot_a(s_a, s_b, end);
+		else if (start == *s_a && end != end_s_a)
+			data = ft_pivot_b(s_a, s_b, end);
 		else if (*s_b != NULL)
-			data = ft_pivot_c(s_a, s_b, end, &data);
+			data = ft_pivot_c(s_a, s_b, end);
 
 		//PREMIERE RECURSION
-		if (data.first_rev_rotate != NULL && data.list == 'A')
+		if (data.first_rev_rotate != NULL && data.pivot == 'A')
 			ft_quick_sort(s_a, s_b, *s_a, data.first_rev_rotate);
-		else if (data.first_push != NULL && data.list == 'B')
+		else if (data.first_push != NULL && data.pivot == 'B')
 			ft_quick_sort(s_a, s_b, *s_a, data.first_push);
 		else if (data.first_run == 1)
 			ft_quick_sort(s_a, s_b, *s_a, ft_lst_end(*s_a));
 
 		//DEUXIEME RECURSION
-		if (data.first_rev_rotate != NULL && *s_b && data.list == 'B')
+		if (data.first_rev_rotate != NULL && *s_b && data.pivot == 'B')
 			ft_quick_sort(s_a, s_b, *s_b, data.first_rev_rotate);
-		else if (data.first_push != NULL && *s_b && data.list == 'A')
+		else if (data.first_push != NULL && *s_b && data.pivot == 'A')
 			ft_quick_sort(s_a, s_b, *s_b, data.first_push);
 	}
 	else if ((*s_b) && (*s_b)->next == NULL)

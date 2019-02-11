@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:00:17 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/08 17:11:41 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/11 16:40:38 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		main(int argc, char **argv)
 	}*/
 
 	ft_find_instructions(&stack_a, &stack_b, &instructions);
-	/*if (stack_b != NULL)
+/*	if (stack_b != NULL)
 	{
 		ft_printf("Liste b :\n");
 		ft_lstiter(stack_b, &ft_lstprint_int);
