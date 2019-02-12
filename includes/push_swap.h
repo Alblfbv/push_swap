@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/11 18:18:03 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/12 19:08:07 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ typedef struct	s_struct
 	t_list		*first_rev_rotate;
 	t_list		*first_push;
 	t_list		*end;
-	t_list		**start;
+	t_list		*start;
 	t_list		*pivot;
 	int			first_run;
 	int			rotate;
+	int			pivot_rot;
+	int			pivot_push;
 	char		list;
 }				t_struct;
 
@@ -47,5 +49,9 @@ char		*ft_rev_rotate_ab(t_list **stack_a, t_list **stack_b);
 
 void		ft_select_sort(t_list **s_a, t_list **s_b, t_list **instructions);
 void		ft_quick_sort(t_list **s_a, t_list **s_b, t_list *start, t_list *end);
+t_struct	*ft_find_median(t_struct *data);
+t_struct	*ft_pivot_forth(t_list **s_a, t_list **s_b, t_struct *data);
+t_struct	*ft_pivot_back(t_list **s_a, t_list **s_b, t_struct *data);
+int			ft_check_loop(t_list **s_a, t_struct data);
 
 #endif

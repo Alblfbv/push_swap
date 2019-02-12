@@ -6,18 +6,40 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:23:35 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/11 17:20:01 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/12 17:53:33 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*static void	ft_find_median(t_list **s_a, t_list **s_b, t_struct **data)
+t_struct	*ft_find_median(t_struct *data)
 {
+	int		size;
+	int		*tab;
+	int		i;
+	t_list	*tmp;
+	int		median;
 
-}*/
+	i = 0;
+	size = ft_lst_n_size(data->start, data->end);
+	tmp = data->start;
+	tab = ft_memalloc(sizeof(int) * size);
+	while (i < size && tmp != NULL)
+	{
+		tab[i] = *(int*)tmp->content;
+		i++;
+		tmp = tmp->next;
+	}
+	ft_sort(tab, size);
+	median = tab[size / 2];
+	tmp = data->start;
+	while (*(int*)tmp->content != median)
+		tmp = tmp->next;
+	data->pivot = tmp;
+	return (data);
+}
 
-static t_struct	*ft_split_stack(t_list **s_a, t_list **s_b, t_struct *data, t_list *pivot)
+/*static t_struct	*ft_split_stack(t_list **s_a, t_list **s_b, t_struct *data, t_list *pivot)
 {
 	if (data->pivot == 'B')
 		ft_printf("%s\n", data->ft_push(s_a, s_b));
@@ -46,11 +68,4 @@ static t_struct	*ft_split_stack(t_list **s_a, t_list **s_b, t_struct *data, t_li
 	if (data->pivot == 'A')
 		ft_printf("%s\n", data->ft_push(s_a, s_b));
 	return (data);
-}
-
-t_struct	ft_process_pivot(t_list **s_a, t_list **s_b, t_struct *data, t_list *pivot)
-{
-//	pivot = ft_find_median(s_a, s_b, data);
-	data = ft_split_stack(s_a, s_b, data, pivot);
-	return (*data);
-}
+}*/
