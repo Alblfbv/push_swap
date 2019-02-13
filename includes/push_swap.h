@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/12 19:08:07 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/13 13:45:26 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ typedef struct	s_struct
 	t_list		*pivot;
 	int			first_run;
 	int			rotate;
-	int			pivot_rot;
-	int			pivot_push;
 	char		list;
+	int			end_list;
 }				t_struct;
 
 
