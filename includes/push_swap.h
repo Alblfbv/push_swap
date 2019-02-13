@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/13 13:45:26 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/13 14:59:27 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,5 @@ char		*ft_rev_rotate_ab(t_list **stack_a, t_list **stack_b);
 void		ft_select_sort(t_list **s_a, t_list **s_b, t_list **instructions);
 void		ft_quick_sort(t_list **s_a, t_list **s_b, t_list *start, t_list *end);
 t_struct	*ft_find_median(t_struct *data);
-t_struct	*ft_pivot_forth(t_list **s_a, t_list **s_b, t_struct *data);
-t_struct	*ft_pivot_back(t_list **s_a, t_list **s_b, t_struct *data);
-int			ft_check_loop(t_list **s_a, t_struct data);
 
 #endif

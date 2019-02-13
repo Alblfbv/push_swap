@@ -6,7 +6,7 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/02/12 17:46:58 by allefebv         ###   ########.fr        #
+#    Updated: 2019/02/13 15:20:47 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ SRCPUSHSW	=	srcs/push_swap_dir/main.c			\
 				srcs/push_swap_dir/selection_sort.c	\
 				srcs/push_swap_dir/quick_sort.c		\
 				srcs/push_swap_dir/median_finder.c		\
-				srcs/push_swap_dir/pivot_a.c		\
 
 OBJ			=	$(SRC:.c=.o)
 OBJCHECK	=	$(SRCCHECK:.c=.o)
@@ -72,5 +71,5 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re push_swap libft
-.SILENT: $(OBJCHECK) $(OBJPUSHSW) $(OBJ) all clean fclean re checker push_swap libft
+.PHONY: all clean fclean re libft
+.SILENT: $(OBJCHECK) $(OBJPUSHSW) $(OBJ) all clean fclean re libft $(PUSH_SWAP) $(CHECKER)
