@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:47:20 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/02 16:16:03 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/13 17:54:30 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,23 @@ int		ft_stack_create(t_list **stack_a, char **va_arg, int len)
 		while (s_str[j] != 0)
 		{
 			if (ft_check_int(s_str[j]) == -1)
+			{
+				free(tmp);
+				ft_sstrdel(s_str, j);
 				return (-1);
+			}
 			*tmp = ft_atoi(s_str[j]);
 			ft_lstadd_end(stack_a, ft_lstnew(tmp, sizeof(int*)));
 			j++;
 		}
+		ft_sstrdel(s_str, j);
 		i++;
 	}
 	if (ft_check_duplicates(*stack_a) == -1)
+	{
+		free(tmp);
 		return (-1);
+	}
 	free(tmp);
 	return (0);
 }

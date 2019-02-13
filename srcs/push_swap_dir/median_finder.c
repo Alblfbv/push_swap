@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:23:35 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/13 15:05:53 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/13 16:40:47 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ t_struct	*ft_find_median(t_struct *data)
 	while (*(int*)tmp->content != median)
 		tmp = tmp->next;
 	data->pivot = tmp;
+	free(tab);
 	return (data);
 }
 

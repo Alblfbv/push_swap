@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 13:32:31 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/02 17:08:16 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/13 17:25:49 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ char		*ft_rotate_ab(t_list **stack_a, t_list **stack_b);
 char		*ft_rev_rotate_a(t_list **stack_a, t_list **stack_b);
 char		*ft_rev_rotate_b(t_list **stack_a, t_list **stack_b);
 char		*ft_rev_rotate_ab(t_list **stack_a, t_list **stack_b);
+void		ft_free_int_ptr(void *content, size_t size);
 
 #endif

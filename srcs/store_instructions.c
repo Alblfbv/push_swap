@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 15:14:05 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/01 22:06:58 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/13 18:02:00 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static int	ft_check_line(char *line)
 {
-	if (!(ft_strequ(line, ft_strdup("pa"))) &&
-		!(ft_strequ(line, ft_strdup("pb"))) &&
-		!(ft_strequ(line, ft_strdup("sa"))) &&
-		!(ft_strequ(line, ft_strdup("sb"))) &&
-		!(ft_strequ(line, ft_strdup("ss"))) &&
-		!(ft_strequ(line, ft_strdup("ra"))) &&
-		!(ft_strequ(line, ft_strdup("rb"))) &&
-		!(ft_strequ(line, ft_strdup("rr"))) &&
-		!(ft_strequ(line, ft_strdup("rra"))) &&
-		!(ft_strequ(line, ft_strdup("rrb"))) &&
-		!(ft_strequ(line, ft_strdup("rrr"))))
+	if (!(ft_strequ(line, "pa")) &&
+		!(ft_strequ(line, "pb")) &&
+		!(ft_strequ(line, "sa")) &&
+		!(ft_strequ(line, "sb")) &&
+		!(ft_strequ(line, "ss")) &&
+		!(ft_strequ(line, "ra")) &&
+		!(ft_strequ(line, "rb")) &&
+		!(ft_strequ(line, "rr")) &&
+		!(ft_strequ(line, "rra")) &&
+		!(ft_strequ(line, "rrb")) &&
+		!(ft_strequ(line, "rrr")))
 		return (-1);
 	return (1);
 }
@@ -45,5 +45,7 @@ char	**ft_store_instructions(void)
 		free(line);
 	}
 	instructions = ft_strsplit(tmp, ' ');
+	free(line);
+	free(tmp);
 	return (instructions);
 }

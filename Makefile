@@ -6,7 +6,7 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/02/13 15:20:47 by allefebv         ###   ########.fr        #
+#    Updated: 2019/02/13 17:41:34 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC			=	srcs/create_stacks.c		\
 				srcs/rev_rotate_a.c			\
 				srcs/rev_rotate_b.c			\
 				srcs/rev_rotate_ab.c		\
+				srcs/free_int_ptr.c
 
 SRCCHECK	=	srcs/store_instructions.c	\
 				srcs/checker_dir/main.c

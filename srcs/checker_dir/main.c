@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 13:22:25 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/02 18:33:33 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/13 17:56:26 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,11 @@ int			main(int argc, char **argv)
 		ft_printf("KO\n");
 	else
 		ft_printf("OK\n");
+	i = 0;
+	while (instructions[i] != 0)
+		i++;
+	ft_sstrdel(instructions, i);
+	ft_lstdel(&stack_a, &ft_free_int_ptr);
+	ft_lstdel(&stack_b, &ft_free_int_ptr);
 	return (0);
 }
