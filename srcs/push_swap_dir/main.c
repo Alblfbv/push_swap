@@ -6,23 +6,21 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:00:17 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/13 17:29:04 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/15 16:59:43 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_find_instructions(t_list **s_a, t_list **s_b, t_list **instructions)
+void	ft_find_instructions(t_stacks *stacks)
 {
-	(void)instructions;
-	t_list	*end;
 	//ft_selection_sort(s_a, s_b, instructions);
-	end = ft_lst_end(*s_a);
-	ft_quick_sort(s_a, s_b, *s_a, end);
+	ft_quick_sort(stacks, *(stacks->s_a), ft_lst_end(*(stacks->s_a)));
 }
 
 int		main(int argc, char **argv)
 {
+	t_stacks	stacks;
 	t_list		*stack_a;
 	t_list		*stack_b;
 	t_list		*instructions;
@@ -37,7 +35,11 @@ int		main(int argc, char **argv)
 		ft_printf("Error\n");
 		return (1);
 	}
-	/*ft_printf("LISTE INITIALE --- \n");
+	stacks.s_a = &stack_a;
+	stacks.s_b = &stack_b;
+	stacks.instruct = &instructions;
+	ft_find_instructions(&stacks);
+/*
 	if (stack_b != NULL)
 	{
 		ft_printf("Liste b :\n");
@@ -47,20 +49,9 @@ int		main(int argc, char **argv)
 	{
 		ft_printf("Liste a :\n");
 		ft_lstiter(stack_a, &ft_lstprint_int);
-	}*/
-
-	ft_find_instructions(&stack_a, &stack_b, &instructions);
-/*	if (stack_b != NULL)
-	{
-		ft_printf("Liste b :\n");
-		ft_lstiter(stack_b, &ft_lstprint_int);
 	}
-	if (stack_a != NULL)
-	{
-		ft_printf("Liste a :\n");
-		ft_lstiter(stack_a, &ft_lstprint_int);
-	}
-*/	//ft_lstiter(instructions, &ft_lstprint_str);
+*/
+	ft_lstiter(instructions, &ft_lstprint_str);
 	ft_lstdel(&stack_a, &ft_free_int_ptr);
 	ft_lstdel(&stack_b, &ft_free_int_ptr);
 	return (0);

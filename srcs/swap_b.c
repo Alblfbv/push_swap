@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 14:42:13 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/13 14:22:05 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/15 16:37:05 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ char	*ft_swap_b(t_list **stack_a, t_list **stack_b)
 	t_list	*third;
 
 	(void)stack_a;
-	if (*stack_b == NULL && (*stack_b)->next == NULL)
-		return ("SB appelle alors que moins de 2 elem");
-	new_first = (*stack_b)->next;
-	third = (*stack_b)->next->next;
-	new_second = (*stack_b);
-	(*stack_b) = new_first;
-	(*stack_b)->next = new_second;
-	(*stack_b)->next->next = third;
-	return ("sb");
+	if (*stack_b != NULL && (*stack_b)->next != NULL)
+	{
+		new_first = (*stack_b)->next;
+		third = (*stack_b)->next->next;
+		new_second = (*stack_b);
+		(*stack_b) = new_first;
+		(*stack_b)->next = new_second;
+		(*stack_b)->next->next = third;
+		return ("sb");
+	}
+	return ("SB appelle alors que moins de 2 elem");
 }

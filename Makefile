@@ -6,7 +6,7 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/02/13 17:41:34 by allefebv         ###   ########.fr        #
+#    Updated: 2019/02/15 17:10:49 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,11 @@ SRCCHECK	=	srcs/store_instructions.c	\
 				srcs/checker_dir/main.c
 
 SRCPUSHSW	=	srcs/push_swap_dir/main.c			\
-				srcs/push_swap_dir/selection_sort.c	\
 				srcs/push_swap_dir/quick_sort.c		\
+				srcs/push_swap_dir/selection_sort.c		\
 				srcs/push_swap_dir/median_finder.c		\
+				srcs/push_swap_dir/partition_a.c		\
+				srcs/push_swap_dir/partition_b.c		\
 
 OBJ			=	$(SRC:.c=.o)
 OBJCHECK	=	$(SRCCHECK:.c=.o)
