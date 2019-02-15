@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 19:37:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/13 17:07:19 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/15 14:06:10 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,8 @@ t_struct	ft_pivot_a(t_list **s_a, t_list **s_b, t_struct *data)
 	{
 		if (data->rotate != 0)
 			data->first_rev_rotate = ft_lst_end(*s_a);
-		data->rotate = data->rotate + 1;
 		if ((*s_a)->next != NULL)
-			while (--data->rotate)
+			while (--data->rotate + 1)
 				ft_printf("%s\n", ft_rev_rotate_a(s_a, s_b));
 	}
 	else
@@ -113,13 +112,12 @@ t_struct	ft_pivot_b(t_list **s_a, t_list **s_b, t_struct *data)
 	{
 		if (data->rotate != 0)
 			data->first_rev_rotate = ft_lst_end(*s_b);
-		data->rotate = data->rotate + 1;
 		if (data->rotate != 0)
 			ft_printf("%s\n", ft_push_a(s_a, s_b));
 		if ((*s_b) && (*s_b)->next != NULL)
 			if (data->rotate != 0)
 			{
-				while (--data->rotate)
+				while (--data->rotate + 1)
 					ft_printf("%s\n", ft_rev_rotate_b(s_a, s_b));
 				ft_printf("%s\n", ft_push_b(s_a, s_b));
 			}
