@@ -6,11 +6,11 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 15:38:36 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/02 16:55:34 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/15 18:40:53 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 char	*ft_rev_rotate_b(t_list **stack_a, t_list **stack_b)
 {

@@ -6,11 +6,11 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 13:22:25 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/13 17:56:26 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/15 18:37:40 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 #include <stdio.h>
 
 static void	ft_del_fptr(t_fptr *instruct)

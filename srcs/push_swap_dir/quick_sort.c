@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 19:37:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/15 17:07:57 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/15 18:20:53 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	ft_init_data(t_stacks *stacks, t_struct *data, t_list *end)
 {
 	data->first_rev_rotate = NULL;
 	data->first_push = NULL;
+	data->end_s_a = NULL;
+	data->end_s_b = NULL;
 	data->rotate = 0;
 	data->end_start = 0;
 	data->end = end;
@@ -82,21 +84,13 @@ void	ft_quick_sort(t_stacks *stacks, t_list *start, t_list *end)
 			data = ft_partition_b(stacks, &data);
 
 		//PREMIERE RECURSION
-		if (data.first_rev_rotate != NULL && data.list == 'A')
-			ft_quick_sort(stacks, *(stacks->s_a), data.first_rev_rotate);
-		else if (data.first_push != NULL && data.list == 'B')
-			ft_quick_sort(stacks, *(stacks->s_a), data.first_push);
-		else if (data.end == ft_lst_end(*(stacks->s_a)))
-			ft_quick_sort(stacks, *(stacks->s_a), ft_lst_end(*(stacks->s_a)));
-
+		if (data.end_s_a != NULL && *(stacks->s_a))
+			ft_quick_sort(stacks, *(stacks->s_a), data.end_s_a);
 		//DEUXIEME RECURSION
-		if (data.first_rev_rotate != NULL && *(stacks->s_b) && data.list == 'B')
-			ft_quick_sort(stacks, *(stacks->s_b), data.first_rev_rotate);
-		else if (data.first_push != NULL && *(stacks->s_b) && data.list == 'A')
-			ft_quick_sort(stacks, *(stacks->s_b), data.first_push);
-		else if (data.end == ft_lst_end(*(stacks->s_b)))
-			ft_quick_sort(stacks, *(stacks->s_b), ft_lst_end(*(stacks->s_b)));
+		if (data.end_s_b != NULL && *(stacks->s_b))
+			ft_quick_sort(stacks, *(stacks->s_b), data.end_s_b);
 	}
 	else if (*(stacks->s_b) && (*(stacks->s_b))->next == NULL)
-		ft_lstadd_end(stacks->instruct, ft_lstnew(ft_push_a(stacks->s_a, stacks->s_b), sizeof(char*)));
+		ft_lstadd_end(stacks->instruct,
+		ft_lstnew(ft_push_a(stacks->s_a, stacks->s_b), sizeof(char*)));
 }

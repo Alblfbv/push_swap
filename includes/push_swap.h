@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/15 16:00:08 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/15 18:37:12 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct	s_struct
 {
 	t_list		*first_rev_rotate;
 	t_list		*first_push;
+	t_list		*end_s_a;
+	t_list		*end_s_b;
 	t_list		*end;
 	t_list		*start;
 	t_list		*pivot;
@@ -37,6 +39,13 @@ typedef struct	s_stacks
 	t_list		**s_b;
 	t_list		**instruct;
 }				t_stacks;
+
+
+typedef struct	s_fptr
+{
+	char		**type;
+	char		*(*fptr[INSTRUCT])(t_list **stack_a, t_list **stack_b);
+}				t_fptr;
 
 int			ft_stack_create(t_list **stack_a, char **s_str, int len);
 
@@ -59,5 +68,8 @@ t_struct	*ft_process_rev_rot_a(t_stacks *stacks, t_struct *data);
 t_struct	*ft_process_partition_b(t_stacks *stacks, t_struct *data);
 t_struct	*ft_process_rev_rot_b(t_stacks *stacks, t_struct *data);
 t_struct	*ft_find_median(t_struct *data);
+
+char		**ft_store_instructions(void);
+void		ft_free_int_ptr(void *content, size_t size);
 
 #endif

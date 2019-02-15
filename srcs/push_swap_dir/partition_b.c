@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 15:51:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/15 17:07:39 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:28:26 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ t_struct	*ft_process_partition_b(t_stacks *stacks, t_struct *data)
 		if (*(int*)(*(stacks->s_b))->content > *(int*)data->pivot->content)
 		{
 			ft_lstadd_end(stacks->instruct, ft_lstnew(ft_push_a(stacks->s_a, stacks->s_b), sizeof(char*)));
-			if (data->first_push == NULL)
-				data->first_push = *(stacks->s_a);
+			if (data->end_s_a == NULL)
+				data->end_s_a = *(stacks->s_a);
 		}
 		else if (*(int*)(*(stacks->s_b))->content < *(int*)data->pivot->content)
 		{
@@ -41,9 +41,10 @@ t_struct	*ft_process_rev_rot_b(t_stacks *stacks, t_struct *data)
 	if (data->end_null == 0)
 	{
 		if (data->rotate != 0)
-			data->first_rev_rotate = ft_lst_end(*(stacks->s_b));
-		if (data->rotate != 0)
+		{
+			data->end_s_b = ft_lst_end(*(stacks->s_b));
 			ft_lstadd_end(stacks->instruct, ft_lstnew(ft_push_a(stacks->s_a, stacks->s_b), sizeof(char*)));
+		}
 		if ((*stacks->s_b) && (*stacks->s_b)->next != NULL && data->rotate != 0)
 		{
 			while (--data->rotate + 1)
@@ -52,6 +53,6 @@ t_struct	*ft_process_rev_rot_b(t_stacks *stacks, t_struct *data)
 		}
 	}
 	else
-		data->end = ft_lst_end(*(stacks->s_b));
+		data->end_s_b = ft_lst_end(*(stacks->s_b));
 	return (data);
 }

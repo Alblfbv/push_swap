@@ -6,11 +6,11 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 15:14:05 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/13 18:02:00 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/15 18:39:26 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 static int	ft_check_line(char *line)
 {

@@ -6,11 +6,11 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 15:06:36 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/15 17:08:39 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/15 18:39:40 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 char	*ft_swap_a(t_list **stack_a, t_list **stack_b)
 {

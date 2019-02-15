@@ -6,11 +6,11 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:47:20 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/13 17:54:30 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/15 18:40:19 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 static int	ft_check_int(char *s)
 {
