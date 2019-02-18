@@ -6,7 +6,7 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/02/15 17:10:49 by allefebv         ###   ########.fr        #
+#    Updated: 2019/02/18 17:14:38 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ PUSH_SWAP	=	push_swap
 LIB			=	./libft/libft.a
 INCLUDES	=	./includes
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -I $(INCLUDES) -g3
+CFLAGS		=	-Wall -Wextra -I $(INCLUDES) -g3 -fsanitize=address
 
 SRC			=	srcs/create_stacks.c		\
 				srcs/push_a.c				\
