@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 15:51:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/18 19:19:54 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/18 19:45:24 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,21 @@ void		ft_reduce_size_b(t_stacks *stacks, t_struct *data)
 	while (ft_lst_max_start(stacks, data))
 		ft_lstadd_end(stacks->instruct,
 		ft_lstnew(ft_push_a(stacks->s_a, stacks->s_b), sizeof(char*)));
+}
+
+int			ft_2_elem_b(t_stacks *stacks, t_list *end)
+{
+	if (end == (*stacks->s_b)->next)
+	{
+		ft_lstadd_end(stacks->instruct,
+		ft_lstnew(ft_swap_b(stacks->s_a, stacks->s_b), sizeof(char*)));
+		ft_lstadd_end(stacks->instruct,
+		ft_lstnew(ft_push_a(stacks->s_a, stacks->s_b), sizeof(char*)));
+		ft_lstadd_end(stacks->instruct,
+		ft_lstnew(ft_push_a(stacks->s_a, stacks->s_b), sizeof(char*)));
+		return (1);
+	}
+	return (0);
 }
 
 t_struct	*ft_process_partition_b(t_stacks *stacks, t_struct *data)

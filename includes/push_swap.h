@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/18 18:59:13 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/18 19:44:11 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ t_struct	*ft_process_rev_rot_b(t_stacks *stacks, t_struct *data);
 t_struct	*ft_find_median(t_struct *data);
 t_list		*ft_reduce_size_a(t_list *s_a, t_struct *data);
 void		ft_reduce_size_b(t_stacks *stacks, t_struct *data);
+int			ft_2_elem_a(t_stacks *stacks, t_list *end);
+int			ft_2_elem_b(t_stacks *stacks, t_list *end);
 
 char		**ft_store_instructions(void);
 void		ft_free_int_ptr(void *content, size_t size);

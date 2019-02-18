@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 19:37:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/18 19:14:44 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/18 19:53:05 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,12 @@ t_struct	ft_partition_a(t_stacks *stacks, t_struct *data)
 	data->list = 'A';
 	data->start = *(stacks->s_a);
 	data->end = ft_reduce_size_a(*(stacks->s_a), data);
-	data = ft_find_median(data);
-	data = ft_process_partition_a(stacks, data);
-	data = ft_process_rev_rot_a(stacks, data);
+	if (!ft_2_elem_a(stacks, data->end))
+	{
+		data = ft_find_median(data);
+		data = ft_process_partition_a(stacks, data);
+		data = ft_process_rev_rot_a(stacks, data);
+	}
 	return (*data);
 }
 
@@ -66,7 +69,7 @@ t_struct	ft_partition_b(t_stacks *stacks, t_struct *data)
 {
 	data->list = 'B';
 	ft_reduce_size_b(stacks, data);
-	if (data->end != *stacks->s_a)
+	if (data->end != *stacks->s_a && (!ft_2_elem_b(stacks, data->end)))
 	{
 		data->start = *(stacks->s_b);
 		data = ft_find_median(data);
