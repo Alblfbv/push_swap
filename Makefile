@@ -6,7 +6,7 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/02/18 17:14:38 by allefebv         ###   ########.fr        #
+#    Updated: 2019/02/20 17:31:09 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCPUSHSW	=	srcs/push_swap_dir/main.c			\
 				srcs/push_swap_dir/median_finder.c		\
 				srcs/push_swap_dir/partition_a.c		\
 				srcs/push_swap_dir/partition_b.c		\
+				srcs/push_swap_dir/kompressor.c		\
 
 OBJ			=	$(SRC:.c=.o)
 OBJCHECK	=	$(SRCCHECK:.c=.o)

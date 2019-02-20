@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/19 19:07:29 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/20 17:30:38 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void		ft_reduce_size_b(t_stacks *stacks, t_struct *data);
 int			ft_2_elem_a(t_stacks *stacks, t_list *end);
 int			ft_2_elem_b(t_stacks *stacks, t_list *end);
 t_struct	*ft_chose_pivot(t_struct *data);
+void		ft_kompressor(t_stacks *stacks);
 
 char		**ft_store_instructions(void);
 void		ft_free_int_ptr(void *content, size_t size);

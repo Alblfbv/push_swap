@@ -6,48 +6,95 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 15:04:30 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/19 16:56:40 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/20 17:46:39 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_del_instruct(t_list *prev, t_list *instruct)
+void	ft_del_instruct(t_list **alst, t_list *prev, t_list *elem1)
 {
-	t_list	*next;
-
-	next = instruct->next;
-	free(instruct->content);
-	free(instruct);
-	prev->next = next;
+	ft_printf("-------------- -2\n");
+	if (prev == NULL)
+		*alst = (*alst)->next->next;
+	else
+		prev->next = prev->next->next->next;
+	free(elem1->next->content);
+	free(elem1->next);
+	free(elem1->content);
+	free(elem1);
 }
 
-int		ft_analyse(t_list *inst1, t_list *inst2)
+void	ft_merge_instruct(t_list **alst, t_list *prev, t_list *elem1, char *str)
 {
-	if (ft_strequ((char*)inst1->content, "ra") &&
-		ft_strequ((char*)inst2->content, "rra"))
-	{
-		ft_del_instruct()
+	ft_printf("-------------- -1\n");
+	if (prev == NULL)
+		*alst = (*alst)->next;
+	else
+		prev->next = prev->next->next;
+	elem1->next->content = ft_strdup(str);
+	free(elem1->content);
+	free(elem1);
+}
 
-		return(1);
+int		ft_analyse(t_list **alst, t_list *prev, t_list *elem1)
+{
+	if ((ft_strequ((char*)elem1->content, "ra") && ft_strequ((char*)elem1->next->content, "rra")) ||
+		(ft_strequ((char*)elem1->content, "rra") && ft_strequ((char*)elem1->next->content, "ra")) ||
+		(ft_strequ((char*)elem1->content, "rrb") && ft_strequ((char*)elem1->next->content, "rb")) ||
+		(ft_strequ((char*)elem1->content, "rb") && ft_strequ((char*)elem1->next->content, "rrb")) ||
+		(ft_strequ((char*)elem1->content, "pb") && ft_strequ((char*)elem1->next->content, "pa")) ||
+		(ft_strequ((char*)elem1->content, "pa") && ft_strequ((char*)elem1->next->content, "pb")))
+	{
+		ft_del_instruct(alst, prev, elem1);
+		return (1);
 	}
+	else if (ft_strequ((char*)elem1->content, "rra") && ft_strequ((char*)elem1->next->content, "rrb"))
+	{
+		ft_printf("---------      rra/rrb\n");
+		ft_merge_instruct(alst, prev, elem1, "rrr");
+		return (1);
+	}
+	else if (ft_strequ((char*)elem1->content, "ra") && ft_strequ((char*)elem1->next->content, "rb"))
+	{
+		ft_printf("---------      ra/rb\n");
+		ft_merge_instruct(alst, prev, elem1, "rr");
+		return (1);
+	}
+	else if (ft_strequ((char*)elem1->content, "sa") && ft_strequ((char*)elem1->next->content, "sb"))
+	{
+		ft_printf("---------      sa/sb\n");
+		ft_merge_instruct(alst, prev, elem1, "ss");
+		return (1);
+	}
+	return (0);
 }
 
 void	ft_kompressor(t_stacks *stacks)
 {
 	int	kompress;
 	t_list	*tmp;
+	t_list	*prev;
 
 	kompress = 1;
 	while (kompress)
 	{
-		tmp = stacks->instruct;
+		kompress = 0;
+		tmp = *stacks->instruct;
+		prev = NULL;
 		while (tmp->next != NULL)
 		{
-			kompress = ft_analyse(tmp, tmp->next);
-			if (kompress == 1)
-
-				ft_lstdelone()
+			if(ft_analyse(stacks->instruct, prev, tmp))
+			{
+				kompress = 1;
+				tmp = *stacks->instruct;
+				prev = NULL;
+			}
+			else
+			{
+				prev = tmp;
+				tmp = tmp->next;
+			}
 		}
 	}
 }
