@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 15:04:30 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/20 17:46:39 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/20 17:58:33 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_del_instruct(t_list **alst, t_list *prev, t_list *elem1)
 {
-	ft_printf("-------------- -2\n");
 	if (prev == NULL)
 		*alst = (*alst)->next->next;
 	else
@@ -27,7 +26,6 @@ void	ft_del_instruct(t_list **alst, t_list *prev, t_list *elem1)
 
 void	ft_merge_instruct(t_list **alst, t_list *prev, t_list *elem1, char *str)
 {
-	ft_printf("-------------- -1\n");
 	if (prev == NULL)
 		*alst = (*alst)->next;
 	else
@@ -51,19 +49,16 @@ int		ft_analyse(t_list **alst, t_list *prev, t_list *elem1)
 	}
 	else if (ft_strequ((char*)elem1->content, "rra") && ft_strequ((char*)elem1->next->content, "rrb"))
 	{
-		ft_printf("---------      rra/rrb\n");
 		ft_merge_instruct(alst, prev, elem1, "rrr");
 		return (1);
 	}
 	else if (ft_strequ((char*)elem1->content, "ra") && ft_strequ((char*)elem1->next->content, "rb"))
 	{
-		ft_printf("---------      ra/rb\n");
 		ft_merge_instruct(alst, prev, elem1, "rr");
 		return (1);
 	}
 	else if (ft_strequ((char*)elem1->content, "sa") && ft_strequ((char*)elem1->next->content, "sb"))
 	{
-		ft_printf("---------      sa/sb\n");
 		ft_merge_instruct(alst, prev, elem1, "ss");
 		return (1);
 	}

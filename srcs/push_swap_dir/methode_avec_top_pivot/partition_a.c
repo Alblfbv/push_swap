@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 15:22:33 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/20 17:55:41 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/20 16:47:37 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,13 @@ int			ft_2_elem_a(t_stacks *stacks, t_list *end)
 t_struct	*ft_process_partition_a(t_stacks *stacks, t_struct *data)
 {
 
-	while (*(stacks->s_a) != data->end) //&& !(data->end_start))
+	while (*stacks->s_a != data->end && !(data->end_start))
 	{
+		if (*stacks->s_a == data->pivot)
+			ft_lstadd_end(stacks->instruct,
+			ft_lstnew(ft_swap_a(stacks->s_a, stacks->s_b), sizeof(char*)));
+		if (*stacks->s_a == data->end)
+			data->end_start = 1;
 		if (*(int*)(*stacks->s_a)->content < *(int*)data->pivot->content)
 		{
 			ft_lstadd_end(stacks->instruct,
@@ -60,19 +65,8 @@ t_struct	*ft_process_partition_a(t_stacks *stacks, t_struct *data)
 			data->rotate = data->rotate + 1;
 		}
 	}
-	if (*(int*)(*stacks->s_a)->content < *(int*)data->pivot->content)
-	{
-		ft_lstadd_end(stacks->instruct,
-		ft_lstnew(ft_push_b(stacks->s_a, stacks->s_b), sizeof(char*)));
-		if (data->end_s_b == NULL)
-			data->end_s_b = *stacks->s_b;
-	}
-	else if (*(int*)(*stacks->s_a)->content >= *(int*)data->pivot->content)
-	{
-		ft_lstadd_end(stacks->instruct,
-		ft_lstnew(ft_rotate_a(stacks->s_a, stacks->s_b), sizeof(char*)));
-		data->rotate = data->rotate + 1;
-	}
+	ft_lstadd_end(stacks->instruct,
+	ft_lstnew(ft_push_b(stacks->s_a, stacks->s_b), sizeof(char*)));
 	return (data);
 }
 
