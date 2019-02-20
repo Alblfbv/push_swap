@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/18 19:44:11 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/19 19:07:29 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # define INSTRUCT 11
+# define MIN_QS_SIZE 10
 
 # include "libft.h"
 # include <stdlib.h>
@@ -70,6 +71,7 @@ t_list		*ft_reduce_size_a(t_list *s_a, t_struct *data);
 void		ft_reduce_size_b(t_stacks *stacks, t_struct *data);
 int			ft_2_elem_a(t_stacks *stacks, t_list *end);
 int			ft_2_elem_b(t_stacks *stacks, t_list *end);
+t_struct	*ft_chose_pivot(t_struct *data);
 
 char		**ft_store_instructions(void);
 void		ft_free_int_ptr(void *content, size_t size);

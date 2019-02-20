@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 13:23:35 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/20 15:54:04 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/20 14:47:18 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ t_struct	*ft_find_median(t_struct *data)
 		tmp = tmp->next;
 	}
 	ft_sort(sort_tab, size);
-	median = ft_opti_median(sort_tab, unsort_tab, size);
+	median = sort_tab[size / 2];
+	//median = ft_opti_median(sort_tab, unsort_tab, size);
 	tmp = data->start;
 	while (*(int*)tmp->content != median)
 		tmp = tmp->next;
