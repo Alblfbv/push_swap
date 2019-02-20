@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 15:51:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/20 18:19:48 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/20 18:25:55 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_struct	*ft_process_p_r_b(t_stacks *stacks, t_struct *data)
 		ft_lstnew(ft_rotate_b(stacks->s_a, stacks->s_b), sizeof(char*)));
 		data->rotate = data->rotate + 1;
 	}
+	return (data);
 }
 
 t_struct	*ft_process_rrb(t_stacks *stacks, t_struct *data)
