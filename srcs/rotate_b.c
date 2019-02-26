@@ -19,7 +19,7 @@ char	*ft_rotate_b(t_list **stack_a, t_list **stack_b)
 
 	(void)stack_a;
 	if (*stack_b == NULL || (*stack_b)->next == NULL)
-		return ("RB appelle alors que nul");
+		return ("RB VIDE");
 	second = (*stack_b)->next;
 	last = *stack_b;
 	while (last->next != NULL)

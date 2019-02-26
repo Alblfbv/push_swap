@@ -99,6 +99,5 @@ void	ft_quick_sort(t_stacks *stacks, t_list *start, t_list *end)
 			ft_quick_sort(stacks, *(stacks->s_b), data.end_s_b);
 	}
 	else if (*(stacks->s_b) && start == *stacks->s_b)
-		ft_lstadd_end(stacks->instruct,
-		ft_lstnew(ft_push_a(stacks->s_a, stacks->s_b), sizeof(char*)));
+		ft_inst_push_a(stacks);
 }
