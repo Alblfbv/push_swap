@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/20 17:30:38 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/26 19:00:46 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct	s_struct
 	char		list;
 	int			end_start;
 	int			end_null;
+	int			med_flag;
 }				t_struct;
 
 typedef struct	s_stacks
@@ -73,6 +74,15 @@ int			ft_2_elem_a(t_stacks *stacks, t_list *end);
 int			ft_2_elem_b(t_stacks *stacks, t_list *end);
 t_struct	*ft_chose_pivot(t_struct *data);
 void		ft_kompressor(t_stacks *stacks);
+
+void		ft_inst_swap_a(t_stacks *stacks);
+void		ft_inst_swap_b(t_stacks *stacks);
+void		ft_inst_push_a(t_stacks *stacks);
+void		ft_inst_push_b(t_stacks *stacks);
+void		ft_inst_rot_a(t_stacks *stacks);
+void		ft_inst_rot_b(t_stacks *stacks);
+void		ft_inst_rev_rot_a(t_stacks *stacks);
+void		ft_inst_rev_rot_b(t_stacks *stacks);
 
 char		**ft_store_instructions(void);
 void		ft_free_int_ptr(void *content, size_t size);

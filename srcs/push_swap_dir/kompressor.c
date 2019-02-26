@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 15:04:30 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/20 17:58:33 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/26 14:54:16 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_merge_instruct(t_list **alst, t_list *prev, t_list *elem1, char *str)
 	free(elem1);
 }
 
-int		ft_analyse(t_list **alst, t_list *prev, t_list *elem1)
+int		ft_simple(t_list **alst, t_list *prev, t_list *elem1)
 {
 	if ((ft_strequ((char*)elem1->content, "ra") && ft_strequ((char*)elem1->next->content, "rra")) ||
 		(ft_strequ((char*)elem1->content, "rra") && ft_strequ((char*)elem1->next->content, "ra")) ||
@@ -77,9 +77,9 @@ void	ft_kompressor(t_stacks *stacks)
 		kompress = 0;
 		tmp = *stacks->instruct;
 		prev = NULL;
-		while (tmp->next != NULL)
+		while (tmp != NULL && tmp->next != NULL)
 		{
-			if(ft_analyse(stacks->instruct, prev, tmp))
+			if(ft_simple(stacks->instruct, prev, tmp))
 			{
 				kompress = 1;
 				tmp = *stacks->instruct;
