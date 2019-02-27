@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 15:14:05 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/15 18:39:26 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/27 14:35:44 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,17 @@ static int	ft_check_line(char *line)
 	return (1);
 }
 
-char	**ft_store_instructions(void)
+int		ft_store_instructions(t_list **instructions)
 {
 	char	*line;
-	char	*tmp;
-	char	**instructions;
 
-	tmp = ft_strnew(0);
 	while (get_next_line(0, &line))
 	{
 		if (ft_check_line(line) == -1)
-			return (NULL);
-		tmp = ft_strextend(tmp, line);
-		tmp = ft_strextend(tmp, " ");
+			return (0);
+		ft_lstadd_end(instructions, ft_lstnew(ft_strdup(line), sizeof(char*)));
 		free(line);
 	}
-	instructions = ft_strsplit(tmp, ' ');
 	free(line);
-	free(tmp);
-	return (instructions);
+	return (1);
 }

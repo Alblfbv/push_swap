@@ -6,24 +6,16 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 19:37:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/26 17:56:20 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/27 14:36:16 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//ft_printf("pivot = %d /\\ s_b = %d\n", *(int*)pivot->content, *(int*)(*s_b)->content);
-
-/*if (*s_a)
-	ft_printf("s_a = %d\n", *(int*)(*s_b)->content);
-if (*s_b)
-	ft_printf("s_b = %d\n", *(int*)(*s_b)->content);
-*/
-
-/*	
+/*
+	ft_printf("pivot = %d /\\ s_b = %d\n", *(int*)pivot->content, *(int*)(*s_b)->content);
 	ft_printf("pivot = %d\n", *(int*)data->pivot->content);
 	ft_printf("end = %d\n", *(int*)data->end->content);
-	
 
 	if (*stacks->s_b != NULL)
 	{

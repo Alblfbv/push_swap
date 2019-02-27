@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:47:20 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/15 18:40:19 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/27 13:02:24 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ static int	ft_check_duplicates(t_list *stack_a)
 
 int		ft_stack_create(t_list **stack_a, char **va_arg, int len)
 {
-	int	i;
-	int	j;
-	int	*tmp;
+	int		i;
+	int		j;
+	int		*tmp;
 	char	**s_str;
 
 	i = 0;

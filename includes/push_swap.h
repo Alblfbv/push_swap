@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/26 19:00:46 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/27 14:10:05 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void		ft_inst_rot_b(t_stacks *stacks);
 void		ft_inst_rev_rot_a(t_stacks *stacks);
 void		ft_inst_rev_rot_b(t_stacks *stacks);
 
-char		**ft_store_instructions(void);
+int			ft_store_instructions(t_list **instructions);
 void		ft_free_int_ptr(void *content, size_t size);
 
 #endif

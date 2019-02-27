@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 13:22:25 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/15 18:37:40 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/27 14:35:36 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ static void	ft_del_fptr(t_fptr *instruct)
 		i++;
 	}
 	free(instruct->type);
-	free(instruct);
-
 }
 
 static void	ft_init_fptr(t_fptr *instruct)
@@ -56,74 +54,80 @@ static void	ft_init_fptr(t_fptr *instruct)
 	instruct->fptr[10] = &ft_rev_rotate_ab;
 }
 
-void		ft_process_sort(t_list **s_a, t_list **s_b, char **instructions)
+void		ft_process_sort(t_list **s_a, t_list **s_b, t_list *instructions)
 {
-	t_fptr	*instruct;
+	t_fptr	instruct;
 	int		i;
-	int		j;
 
-	i = 0;
-	instruct = (t_fptr*)ft_memalloc(sizeof(t_fptr));
-	ft_init_fptr(instruct);
-	while (instructions[i] != 0)
+	ft_init_fptr(&instruct);
+	while (instructions)
 	{
-		j = 0;
-		while (j < INSTRUCT)
+		i = 0;
+		while (i < INSTRUCT)
 		{
-			if (ft_strequ(instruct->type[j], instructions[i]))
-				instruct->fptr[j](s_a, s_b);
-			j++;
+			if (ft_strequ(instruct.type[i], (char*)(instructions->content)))
+				instruct.fptr[i](s_a, s_b);
+			i++;
 		}
-		i++;
+		instructions = instructions->next;
 	}
-	ft_del_fptr(instruct);
+	ft_del_fptr(&instruct);
 }
 
-static int	ft_is_sorted(t_list *stack_a, t_list *stack_b)
+static void	ft_is_sorted(t_list *stack_a, t_list *stack_b)
 {
 	if (stack_b != NULL)
-		return (-1);
+		return ;
 	while (stack_a->next->next != NULL)
 	{
 		if (*(int*)stack_a->content > *(int*)stack_a->next->content)
-			return (-1);
+		{
+			ft_printf("KO\n");
+			return ;
+		}
 		stack_a = stack_a->next;
 	}
-	return (1);
+	ft_printf("OK\n");
+}
+
+static void	ft_init_stacks(t_stacks *stacks)
+{
+	stacks->s_a = (t_list**)malloc(sizeof(t_list*));
+	*stacks->s_a = NULL;
+	stacks->s_b = (t_list**)malloc(sizeof(t_list*));
+	*stacks->s_b = NULL;
+	stacks->instruct = (t_list**)malloc(sizeof(t_list*));
+	*stacks->instruct = NULL;
+}
+
+static void	ft_delete_stacks(t_stacks *stacks)
+{
+	ft_lstdel(stacks->s_a, &ft_free_int_ptr);
+	ft_lstdel(stacks->s_b, &ft_free_int_ptr);
+	ft_lstdel(stacks->instruct, &ft_free_int_ptr);
 }
 
 int			main(int argc, char **argv)
 {
-	t_list		*stack_a;
-	t_list		*stack_b;
-	char		**instructions;
+	t_stacks	stacks;
 	int			i;
+	int			visu;
 
-	stack_a = NULL;
-	stack_b = NULL;
 	i = 0;
+	visu = 0;
 	if (argc == 1)
 		return (0);
-	if (!(instructions = ft_store_instructions()))
+	ft_init_stacks(&stacks);
+	if (argc == 3 && (ft_strequ(argv[1], "-v") || ft_strequ(argv[2], "-v")))
+		visu = 1;
+	if (!(ft_store_instructions(stacks.instruct)) ||
+		ft_stack_create(stacks.s_a, argv + 1, argc -1) == -1)
 	{
 		ft_printf("Error\n");
 		return (1);
 	}
-	if (ft_stack_create(&stack_a, argv + 1, argc -1) == -1)
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
-	ft_process_sort(&stack_a, &stack_b, instructions);
-	if (ft_is_sorted(stack_a, stack_b) == -1)
-		ft_printf("KO\n");
-	else
-		ft_printf("OK\n");
-	i = 0;
-	while (instructions[i] != 0)
-		i++;
-	ft_sstrdel(instructions, i);
-	ft_lstdel(&stack_a, &ft_free_int_ptr);
-	ft_lstdel(&stack_b, &ft_free_int_ptr);
+	ft_process_sort(stacks.s_a, stacks.s_b, *stacks.instruct);
+	ft_is_sorted(*stacks.s_a, *stacks.s_b);
+	ft_delete_stacks(&stacks);
 	return (0);
 }

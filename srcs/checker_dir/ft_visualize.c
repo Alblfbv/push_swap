@@ -1,31 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_b.c                                         :+:      :+:    :+:   */
+/*   ft_visualize.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/01 15:40:11 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/27 11:46:10 by allefebv         ###   ########.fr       */
+/*   Created: 2019/02/27 11:54:45 by allefebv          #+#    #+#             */
+/*   Updated: 2019/02/27 11:59:37 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-char	*ft_rotate_b(t_list **stack_a, t_list **stack_b)
+void	ft_visualize(t_list **s_a, t_list **s_b)
 {
-	t_list	*last;
-	t_list	*second;
-
-	(void)stack_a;
-	if (*stack_b == NULL || (*stack_b)->next == NULL)
-		return ("RB VIDE");
-	second = (*stack_b)->next;
-	last = *stack_b;
-	while (last->next != NULL)
-		last = last->next;
-	(*stack_b)->next = NULL;
-	last->next = *stack_b;
-	*stack_b = second;
-	return ("rb");
+	
 }
