@@ -6,7 +6,7 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/02/27 11:40:13 by allefebv         ###   ########.fr        #
+#    Updated: 2019/02/27 14:47:16 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,10 @@ SRC			=	srcs/create_stacks.c		\
 				srcs/free_int_ptr.c
 
 SRCCHECK	=	srcs/store_instructions.c	\
-				srcs/checker_dir/main.c
+				srcs/checker_dir/main.c		\
+				srcs/checker_dir/visual_checker.c	\
+				srcs/checker_dir/classic_checker.c	\
+				srcs/checker_dir/fptr_init_del.c	\
 
 SRCPUSHSW	=	srcs/push_swap_dir/main.c			\
 				srcs/push_swap_dir/quick_sort.c		\

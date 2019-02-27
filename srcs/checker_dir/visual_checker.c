@@ -6,11 +6,11 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:54:45 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/27 11:59:37 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/27 14:48:55 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_visualize(t_list **s_a, t_list **s_b)
+void	ft_visual_checker(t_stacks)
 {
 	
 }
