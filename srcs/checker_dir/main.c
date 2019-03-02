@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 13:22:25 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/27 14:45:23 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/02/27 15:19:16 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,12 @@ int			main(int argc, char **argv)
 	if (argc == 1)
 		return (0);
 	ft_init_stacks(&stacks);
-	if (argc == 3 && (ft_strequ(argv[1], "-v") || ft_strequ(argv[2], "-v")))
+	if (argc == 3 && ft_strequ(argv[1], "-v"))
 		visu = 1;
-	if (!(ft_store_instructions(stacks.instruct)) ||
-		ft_stack_create(stacks.s_a, argv + 1, argc -1) == -1)
-	{
-		ft_printf("Error\n");
-		return (1);
-	}
-	if (visu == 1)
-		ft_visual_checker(&stacks);
+		if (visu == 1)
+		ft_visual_checker(&stacks, argc, argv);
 	else
-		ft_classic_checker(&stacks);
+		ft_classic_checker(&stacks, argc, argv);
 	ft_delete_stacks(&stacks);
 	return (0);
 }

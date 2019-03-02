@@ -6,7 +6,7 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/02/27 14:47:16 by allefebv         ###   ########.fr        #
+#    Updated: 2019/02/28 15:13:16 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ PUSH_SWAP	=	push_swap
 LIB			=	./libft/libft.a
 INCLUDES	=	./includes
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -I $(INCLUDES) -g3 -fsanitize=address \
-				-F/Library/Frameworks -framework SDL2
+CFLAGS		=	-Wall -Wextra -I $(INCLUDES) -g3 -fsanitize=address
+SDL			=	-F/Library/Frameworks -framework SDL2
 
 SRC			=	srcs/create_stacks.c		\
 				srcs/push_a.c				\
@@ -37,6 +37,7 @@ SRCCHECK	=	srcs/store_instructions.c	\
 				srcs/checker_dir/visual_checker.c	\
 				srcs/checker_dir/classic_checker.c	\
 				srcs/checker_dir/fptr_init_del.c	\
+				srcs/checker_dir/rect_management.c	\
 
 SRCPUSHSW	=	srcs/push_swap_dir/main.c			\
 				srcs/push_swap_dir/quick_sort.c		\
@@ -57,7 +58,7 @@ $(PUSH_SWAP): $(OBJPUSHSW) $(OBJ) libft
 	echo "made push_swap"
 
 $(CHECKER): $(OBJCHECK) $(OBJ) libft
-	$(CC) $(CFLAGS) $(OBJCHECK) $(OBJ) -o $(CHECKER) $(LIB)
+	$(CC) $(CFLAGS) $(SDL) $(OBJCHECK) $(OBJ) -o $(CHECKER) $(LIB)
 	echo "made checker"
 
 libft:

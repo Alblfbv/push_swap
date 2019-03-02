@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/27 14:50:24 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/02 18:30:39 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # include "libft.h"
 # include <stdlib.h>
+# include <SDL2/SDL.h>
 
 typedef struct	s_struct
 {
@@ -46,6 +47,36 @@ typedef struct	s_fptr
 	char		**type;
 	char		*(*fptr[INSTRUCT])(t_list **stack_a, t_list **stack_b);
 }				t_fptr;
+
+typedef struct		s_visu
+{
+	SDL_Window		*window;
+	SDL_Renderer	*renderer;
+	SDL_Event		event;
+	SDL_Rect		back_2;
+	int				win_w;
+	int				win_h;
+	int				max_list;
+	int				size_list;
+	int				nb_small_px;
+	int				nb_large_px;
+	int				small_px;
+	int				large_px;
+}					t_visu;
+
+typedef struct	s_rect
+{
+	SDL_Rect	rectangle;
+	int			nb;
+}				t_rect;
+
+typedef struct	s_rev_tab
+{
+	int			*a;
+	int			size_a;
+	int			*b;
+	int			size_b;
+}				t_rev_tab;
 
 int			ft_stack_create(t_list **stack_a, char **s_str, int len);
 
@@ -86,8 +117,9 @@ void		ft_inst_rev_rot_b(t_stacks *stacks);
 
 int			ft_store_instructions(t_list **instructions);
 void		ft_free_int_ptr(void *content, size_t size);
-void		ft_classic_checker(t_stacks *stacks);
-void		ft_visual_checker(t_stacks *stacks);
+void		ft_classic_checker(t_stacks *stacks, int argc, char **argv);
+void		ft_visual_checker(t_stacks *stacks, int argc, char **argv);
+void		ft_init_rects(t_visu *visu, t_rect **rects, t_list *s_a);
 void		ft_init_fptr(t_fptr *instruct);
 void		ft_del_fptr(t_fptr *instruct);
 
