@@ -6,7 +6,7 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/03/04 17:59:52 by allefebv         ###   ########.fr        #
+#    Updated: 2019/03/05 16:09:39 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,14 +43,21 @@ SRCCHECK	=	srcs/store_instructions.c	\
 				srcs/checker_dir/rect_print_inv2.c	\
 				srcs/checker_dir/rect_print_success1.c	\
 				srcs/checker_dir/rect_print_success2.c	\
+				srcs/checker_dir/ft_clear_back.c	\
+				srcs/checker_dir/sdl_init_del.c	\
+				srcs/checker_dir/ft_sdl_end.c	\
+				srcs/checker_dir/ft_visual_sort.c	\
 
 SRCPUSHSW	=	srcs/push_swap_dir/main.c			\
 				srcs/push_swap_dir/quick_sort.c		\
 				srcs/push_swap_dir/median_finder.c		\
 				srcs/push_swap_dir/partition_a.c		\
+				srcs/push_swap_dir/partition_a_optis.c		\
 				srcs/push_swap_dir/partition_b.c		\
+				srcs/push_swap_dir/partition_b_optis.c		\
 				srcs/push_swap_dir/kompressor.c		\
-				srcs/push_swap_dir/ps_calls.c		\
+				srcs/push_swap_dir/ps_calls_a.c		\
+				srcs/push_swap_dir/ps_calls_b.c		\
 
 OBJ			=	$(SRC:.c=.o)
 OBJCHECK	=	$(SRCCHECK:.c=.o)

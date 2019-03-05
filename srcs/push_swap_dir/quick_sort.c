@@ -6,30 +6,13 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 19:37:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/27 14:36:16 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/05 13:52:30 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-	ft_printf("pivot = %d /\\ s_b = %d\n", *(int*)pivot->content, *(int*)(*s_b)->content);
-	ft_printf("pivot = %d\n", *(int*)data->pivot->content);
-	ft_printf("end = %d\n", *(int*)data->end->content);
-
-	if (*stacks->s_b != NULL)
-	{
-		ft_printf("Liste b :\n");
-		ft_lstiter(*stacks->s_b, &ft_lstprint_int);
-	}
-	if (*stacks->s_a != NULL)
-	{
-		ft_printf("Liste a :\n");
-		ft_lstiter(*stacks->s_a, &ft_lstprint_int);
-	}
-*/
-
-void	ft_init_data(t_stacks *stacks, t_struct *data, t_list *end)
+void		ft_init_data(t_stacks *stacks, t_struct *data, t_list *end)
 {
 	data->end_s_a = NULL;
 	data->end_s_b = NULL;
@@ -70,23 +53,19 @@ t_struct	ft_partition_b(t_stacks *stacks, t_struct *data)
 	return (*data);
 }
 
-void	ft_quick_sort(t_stacks *stacks, t_list *start, t_list *end)
+void		ft_quick_sort(t_stacks *stacks, t_list *start, t_list *end)
 {
 	t_struct	data;
 
 	ft_init_data(stacks, &data, end);
 	if (start != end)
 	{
-		//PIVOTS
 		if (start == *(stacks->s_a) && !(ft_lst_is_sorted(*stacks->s_a)))
 			data = ft_partition_a(stacks, &data);
 		else if (*(stacks->s_b) != NULL)
 			data = ft_partition_b(stacks, &data);
-
-		//PREMIERE RECURSION
 		if (data.end_s_a != NULL && !(ft_lst_is_sorted(*stacks->s_a)))
 			ft_quick_sort(stacks, *(stacks->s_a), data.end_s_a);
-		//DEUXIEME RECURSION
 		if (data.end_s_b != NULL && *(stacks->s_b))
 			ft_quick_sort(stacks, *(stacks->s_b), data.end_s_b);
 	}

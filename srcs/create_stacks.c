@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:47:20 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/27 13:02:24 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/05 13:36:41 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static int	ft_check_int(char *s)
 			sign = -1;
 		i++;
 	}
-	if (!(ft_isdigit(s[i])))
-		return (-1);
 	while (ft_isdigit(s[i]))
 	{
 		if ((sign == 1 && nb * 10 + s[i] - 48 > 2147483647) ||
@@ -45,6 +43,7 @@ static int	ft_check_int(char *s)
 static int	ft_check_duplicates(t_list *stack_a)
 {
 	t_list *tmp;
+
 	while (stack_a->next != NULL)
 	{
 		tmp = stack_a->next;
@@ -59,18 +58,14 @@ static int	ft_check_duplicates(t_list *stack_a)
 	return (1);
 }
 
-int		ft_stack_create(t_list **stack_a, char **va_arg, int len)
+static int	ft_stack_fill(t_list **stack_a, char **va_arg, int len, int *tmp)
 {
-	int		i;
-	int		j;
-	int		*tmp;
 	char	**s_str;
+	int		j;
 
-	i = 0;
-	tmp = (int*)malloc(sizeof(int));
-	while (i < len)
+	while (len)
 	{
-		s_str = ft_strsplit(va_arg[i], ' ');
+		s_str = ft_strsplit(*va_arg, ' ');
 		j = 0;
 		while (s_str[j] != 0)
 		{
@@ -85,8 +80,19 @@ int		ft_stack_create(t_list **stack_a, char **va_arg, int len)
 			j++;
 		}
 		ft_sstrdel(s_str, j);
-		i++;
+		len--;
+		va_arg++;
 	}
+	return (0);
+}
+
+int			ft_stack_create(t_list **stack_a, char **va_arg, int len)
+{
+	int		*tmp;
+
+	tmp = (int*)malloc(sizeof(int));
+	if (ft_stack_fill(stack_a, va_arg, len, tmp) == -1)
+		return (-1);
 	if (ft_check_duplicates(*stack_a) == -1)
 	{
 		free(tmp);

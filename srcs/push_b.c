@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 14:40:17 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/15 18:38:22 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/05 13:18:20 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,5 @@ char	*ft_push_b(t_list **stack_a, t_list **stack_b)
 	*stack_a = (*stack_a)->next;
 	*stack_b = start_a;
 	(*stack_b)->next = start_b;
-
-
-/*	*stack_b est l'ancien *stack_a
-	*stack_b->next est l'ancien *stack_b
-	*stack_a est l'ancien *stack_a->next */
 	return ("pb");
 }
