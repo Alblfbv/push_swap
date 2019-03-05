@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 14:40:55 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/27 14:50:36 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/05 11:44:12 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,3 @@ void	ft_init_fptr(t_fptr *instruct)
 	instruct->fptr[9] = &ft_rev_rotate_b;
 	instruct->fptr[10] = &ft_rev_rotate_ab;
 }
-

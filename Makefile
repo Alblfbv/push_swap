@@ -6,16 +6,16 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/02/28 15:13:16 by allefebv         ###   ########.fr        #
+#    Updated: 2019/03/04 17:59:52 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CHECKER		=	checker
-PUSH_SWAP	=	push_swap
+NAME		=	push_swap
+NAME_CHECK	=	checker
 LIB			=	./libft/libft.a
 INCLUDES	=	./includes
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -I $(INCLUDES) -g3 -fsanitize=address
+CFLAGS		=	-Wall -Wextra -I $(INCLUDES) -g3 # -fsanitize=address
 SDL			=	-F/Library/Frameworks -framework SDL2
 
 SRC			=	srcs/create_stacks.c		\
@@ -38,6 +38,11 @@ SRCCHECK	=	srcs/store_instructions.c	\
 				srcs/checker_dir/classic_checker.c	\
 				srcs/checker_dir/fptr_init_del.c	\
 				srcs/checker_dir/rect_management.c	\
+				srcs/checker_dir/rect_print.c	\
+				srcs/checker_dir/rect_print_inv.c	\
+				srcs/checker_dir/rect_print_inv2.c	\
+				srcs/checker_dir/rect_print_success1.c	\
+				srcs/checker_dir/rect_print_success2.c	\
 
 SRCPUSHSW	=	srcs/push_swap_dir/main.c			\
 				srcs/push_swap_dir/quick_sort.c		\
@@ -51,15 +56,12 @@ OBJ			=	$(SRC:.c=.o)
 OBJCHECK	=	$(SRCCHECK:.c=.o)
 OBJPUSHSW	=	$(SRCPUSHSW:.c=.o)
 
-all: $(PUSH_SWAP) $(CHECKER)
+all: $(NAME)
 
-$(PUSH_SWAP): $(OBJPUSHSW) $(OBJ) libft
-	$(CC) $(CFLAGS) $(OBJPUSHSW) $(OBJ) -o $(PUSH_SWAP) $(LIB)
-	echo "made push_swap"
-
-$(CHECKER): $(OBJCHECK) $(OBJ) libft
-	$(CC) $(CFLAGS) $(SDL) $(OBJCHECK) $(OBJ) -o $(CHECKER) $(LIB)
-	echo "made checker"
+$(NAME): $(OBJPUSHSW) $(OBJCHECK) $(OBJ) libft
+	$(CC) $(CFLAGS) $(OBJPUSHSW) $(OBJ) -o $(NAME) $(LIB)
+	$(CC) $(CFLAGS) $(SDL) $(OBJCHECK) $(OBJ) -o $(NAME_CHECK) $(LIB)
+	echo "made push_swap & checker"
 
 libft:
 	make -C libft -f libft.mk
@@ -71,14 +73,13 @@ clean:
 	$(RM) $(OBJPUSHSW)
 	echo "cleaned project push_swap"
 
-
 fclean: clean
 	make -C libft -f libft.mk fclean
-	$(RM) $(CHECKER)
-	$(RM) $(PUSH_SWAP)
+	$(RM) $(NAME)
+	$(RM) $(NAME_CHECK)
 	echo "fcleaned project push_swap"
 
 re: fclean all
 
 .PHONY: all clean fclean re libft
-.SILENT: $(OBJCHECK) $(OBJPUSHSW) $(OBJ) all clean fclean re libft $(PUSH_SWAP) $(CHECKER)
+.SILENT: $(OBJCHECK) $(OBJPUSHSW) $(OBJ) all clean fclean re libft

@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:00:17 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/27 14:12:58 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/05 12:07:54 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,21 @@ static void	ft_init_stacks(t_stacks *stacks)
 static void	ft_delete_stacks(t_stacks *stacks)
 {
 	ft_lstdel(stacks->s_a, &ft_free_int_ptr);
+	free(stacks->s_a);
 	ft_lstdel(stacks->s_b, &ft_free_int_ptr);
+	free(stacks->s_b);
 	ft_lstdel(stacks->instruct, &ft_free_int_ptr);
+	free(stacks->instruct);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_stacks	stacks;
-	
+
 	if (argc == 1)
 		return (0);
 	ft_init_stacks(&stacks);
-	if (ft_stack_create(stacks.s_a, argv + 1, argc -1) == -1)
+	if (ft_stack_create(stacks.s_a, argv + 1, argc - 1) == -1)
 	{
 		ft_printf("Error\n");
 		return (1);

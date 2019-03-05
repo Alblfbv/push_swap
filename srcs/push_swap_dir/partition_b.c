@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 15:51:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/26 19:07:18 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/04 13:01:19 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		ft_reduce_size_b(t_stacks *stacks, t_struct *data)
 
 int			ft_2_elem_b(t_stacks *stacks, t_list *end)
 {
-	if (end == (*stacks->s_b)->next)
+	if (end == (*stacks->s_b)->next && end != NULL)
 	{
 		ft_inst_swap_b(stacks);
 		ft_inst_push_a(stacks);

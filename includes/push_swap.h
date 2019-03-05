@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/02 18:30:39 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/05 12:00:43 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct		s_visu
 
 typedef struct	s_rect
 {
-	SDL_Rect	rectangle;
+	SDL_Rect	rect;
 	int			nb;
 }				t_rect;
 
@@ -120,7 +120,13 @@ void		ft_free_int_ptr(void *content, size_t size);
 void		ft_classic_checker(t_stacks *stacks, int argc, char **argv);
 void		ft_visual_checker(t_stacks *stacks, int argc, char **argv);
 void		ft_init_rects(t_visu *visu, t_rect **rects, t_list *s_a);
+void		ft_rects_success(t_visu *visu, t_rect **rects);
 void		ft_init_fptr(t_fptr *instruct);
 void		ft_del_fptr(t_fptr *instruct);
+void		ft_put_rects(t_visu *visu, t_rect *rects, t_rev_tab rev_tab);
+void		ft_put_rects_inv(t_visu *visu, t_rect *rects, t_rev_tab rev_tab);
+void		ft_put_rects_inv2(t_visu *visu, t_rect *rects, t_rev_tab rev_tab);
+void		ft_put_rects_s1(t_visu *visu, t_rect *rects, t_rev_tab rev_tab);
+void		ft_put_rects_s2(t_visu *visu, t_rect *rects, t_rev_tab rev_tab);
 
 #endif
