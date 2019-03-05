@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:00:17 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 12:07:54 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/05 17:08:56 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int			main(int argc, char **argv)
 	ft_init_stacks(&stacks);
 	if (ft_stack_create(stacks.s_a, argv + 1, argc - 1) == -1)
 	{
+		ft_delete_stacks(&stacks);
 		ft_printf("Error\n");
 		return (1);
 	}

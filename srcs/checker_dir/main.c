@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 13:22:25 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 11:43:58 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/05 17:16:47 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,7 @@ int			main(int argc, char **argv)
 	i = 0;
 	visu = 0;
 	if (argc == 1)
-	{
-		ft_putstr_fd("Error\n", 2);
 		return (0);
-	}
 	ft_init_stacks(&stacks);
 	if (ft_strequ(argv[1], "-v"))
 		visu = 1;

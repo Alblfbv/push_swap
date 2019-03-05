@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.c                                           :+:      :+:    :+:   */
+/*   stack_create.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:47:20 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 13:36:41 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/05 18:22:23 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	ft_check_duplicates(t_list *stack_a)
 	while (stack_a->next != NULL)
 	{
 		tmp = stack_a->next;
-		while (tmp->next != NULL)
+		while (tmp != NULL)
 		{
 			if (*(int*)(tmp->content) == *(int*)(stack_a->content))
 				return (-1);
@@ -71,8 +71,7 @@ static int	ft_stack_fill(t_list **stack_a, char **va_arg, int len, int *tmp)
 		{
 			if (ft_check_int(s_str[j]) == -1)
 			{
-				free(tmp);
-				ft_sstrdel(s_str, j);
+				ft_sstrdel(s_str, j + 1);
 				return (-1);
 			}
 			*tmp = ft_atoi(s_str[j]);
@@ -88,16 +87,11 @@ static int	ft_stack_fill(t_list **stack_a, char **va_arg, int len, int *tmp)
 
 int			ft_stack_create(t_list **stack_a, char **va_arg, int len)
 {
-	int		*tmp;
+	int		tmp;
 
-	tmp = (int*)malloc(sizeof(int));
-	if (ft_stack_fill(stack_a, va_arg, len, tmp) == -1)
+	if (ft_stack_fill(stack_a, va_arg, len, &tmp) == -1)
 		return (-1);
 	if (ft_check_duplicates(*stack_a) == -1)
-	{
-		free(tmp);
 		return (-1);
-	}
-	free(tmp);
 	return (0);
 }
