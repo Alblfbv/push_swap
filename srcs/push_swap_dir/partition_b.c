@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 15:51:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 14:09:21 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/05 16:33:14 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int			ft_only_under_med(t_list *s_b, t_struct *data)
 	return (0);
 }
 
-t_struct	*ft_process_p_r_b(t_stacks *stacks, t_struct *data)
+static int	ft_opti_med(t_stacks *stacks, t_struct *data)
 {
 	if ((ft_lst_n_size(*stacks->s_b, data->end) >= 3 &&
 		*(int*)(*stacks->s_b)->content < *(int*)data->pivot->content &&
@@ -39,6 +39,7 @@ t_struct	*ft_process_p_r_b(t_stacks *stacks, t_struct *data)
 		ft_inst_swap_b(stacks);
 		ft_inst_push_a(stacks);
 		data->med_flag = 1;
+		return (1);
 	}
 	else if ((ft_lst_n_size(*stacks->s_b, data->end) == 2 &&
 		*(int*)(*(stacks->s_b))->content < *(int*)data->pivot->content &&
@@ -48,8 +49,16 @@ t_struct	*ft_process_p_r_b(t_stacks *stacks, t_struct *data)
 		ft_inst_push_a(stacks);
 		data->med_flag = 1;
 		data->end_s_b = *stacks->s_b;
+		return (1);
 	}
-	else if (*(int*)(*(stacks->s_b))->content >= *(int*)data->pivot->content)
+	return (0);
+}
+
+t_struct	*ft_process_p_r_b(t_stacks *stacks, t_struct *data)
+{
+	if (ft_opti_med(stacks, data))
+		return (data);
+	if (*(int*)(*(stacks->s_b))->content >= *(int*)data->pivot->content)
 	{
 		ft_inst_push_a(stacks);
 		if (data->end_s_a == NULL)
