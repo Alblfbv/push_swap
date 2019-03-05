@@ -33,10 +33,8 @@ static void	ft_delete_stacks(t_stacks *stacks)
 int			main(int argc, char **argv)
 {
 	t_stacks	stacks;
-	int			i;
 	int			visu;
 
-	i = 0;
 	visu = 0;
 	if (argc == 1)
 		return (0);

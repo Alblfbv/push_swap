@@ -104,7 +104,7 @@ int					ft_2_elem_a(t_stacks *stacks, t_list *end);
 int					ft_2_elem_b(t_stacks *stacks, t_list *end);
 t_struct			*ft_chose_pivot(t_struct *data);
 void				ft_kompressor(t_stacks *stacks);
-void				ft_opti_3_a(t_stacks *stacks, t_struct *data);
+int					ft_opti_3_a(t_stacks *stacks, t_struct *data);
 
 void				ft_inst_swap_a(t_stacks *stacks);
 void				ft_inst_swap_b(t_stacks *stacks);

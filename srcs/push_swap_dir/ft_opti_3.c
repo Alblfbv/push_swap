@@ -64,7 +64,7 @@ void	ft_opti_sub_a(t_stacks *stacks, int *tab)
 	}
 }
 
-void	ft_opti_3_a(t_stacks *stacks, t_struct *data)
+int		ft_opti_3_a(t_stacks *stacks, t_struct *data)
 {
 	int	*tab;
 
@@ -73,10 +73,19 @@ void	ft_opti_3_a(t_stacks *stacks, t_struct *data)
 	tab[1] = *(int*)(*stacks->s_a)->next->content;
 	tab[2] = *(int*)(*stacks->s_a)->next->next->content;
 	if (ft_lst_size(*stacks->s_a) == 3)
+	{
 		ft_opti_end_a(stacks, tab);
-	else
+		free(tab);
+		return (1);
+	}
+	if (ft_lst_n_size(*stacks->s_a, data->end) == 3)
+	{
 		ft_opti_sub_a(stacks, tab);
+		free(tab);
+		return (1);
+	}
 	free(tab);
+	return (0);
 }
 
 /*int		ft_opti_3_b(t_stacks *stacks, t_struct *data)

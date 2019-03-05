@@ -32,11 +32,12 @@ t_struct	ft_partition_a(t_stacks *stacks, t_struct *data)
 	data->list = 'A';
 	data->start = *(stacks->s_a);
 	data->end = ft_reduce_size_a(*(stacks->s_a), data);
-	if (!ft_2_elem_a(stacks, data->end))
-	{
-		data = ft_chose_pivot(data);
-		data = ft_process_partition_a(stacks, data);
-	}
+	if (ft_2_elem_a(stacks, data->end))
+		return (*data);
+	if (ft_opti_3_a(stacks, data))
+		return (*data);
+	data = ft_chose_pivot(data);
+	data = ft_process_partition_a(stacks, data);
 	return (*data);
 }
 
