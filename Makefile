@@ -6,7 +6,7 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/03/05 16:09:39 by allefebv         ###   ########.fr        #
+#    Updated: 2019/03/05 19:48:48 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRCPUSHSW	=	srcs/push_swap_dir/main.c			\
 				srcs/push_swap_dir/kompressor.c		\
 				srcs/push_swap_dir/ps_calls_a.c		\
 				srcs/push_swap_dir/ps_calls_b.c		\
+				srcs/push_swap_dir/ft_opti_3.c		\
 
 OBJ			=	$(SRC:.c=.o)
 OBJCHECK	=	$(SRCCHECK:.c=.o)
