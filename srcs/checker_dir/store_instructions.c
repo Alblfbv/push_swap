@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 15:14:05 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/06 17:04:11 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/06 17:05:19 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	ft_check_line(char *line)
 int			ft_store_instructions(t_list **instructions)
 {
 	char	*line;
-	
+
 	while (get_next_line(0, &line))
 	{
 		if (ft_check_line(line) == -1)
