@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 15:06:36 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/15 18:39:40 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/06 18:04:43 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ char	*ft_swap_a(t_list **stack_a, t_list **stack_b)
 		(*stack_a)->next->next = third;
 		return ("sa");
 	}
-	return ("SA appelle alors que moins de 2 elem");
+	return ("sa");
 }

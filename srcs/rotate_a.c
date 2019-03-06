@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 13:43:11 by allefebv          #+#    #+#             */
-/*   Updated: 2019/02/15 18:38:55 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/06 18:04:19 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_rotate_a(t_list **stack_a, t_list **stack_b)
 
 	(void)stack_b;
 	if (*stack_a == NULL || (*stack_a)->next == NULL)
-		return ("RA appelle alors que nul");
+		return ("ra");
 	second = (*stack_a)->next;
 	last = *stack_a;
 	while (last->next != NULL)

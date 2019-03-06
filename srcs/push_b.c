@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 14:40:17 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 13:18:20 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/06 18:03:25 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_push_b(t_list **stack_a, t_list **stack_b)
 	t_list	*start_b;
 
 	if (*stack_a == NULL)
-		return ("PB appelle alors que vide");
+		return ("pb");
 	start_a = *stack_a;
 	if (*stack_b)
 		start_b = *stack_b;
