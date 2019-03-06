@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:20:20 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 16:08:52 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/06 18:24:26 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ void	ft_create_tabs(t_list *s_a, t_list *s_b, t_rev_tab *rev_tab)
 
 	rev_tab->size_a = ft_lst_size(s_a);
 	rev_tab->size_b = ft_lst_size(s_b);
-	rev_tab->a = (int*)malloc(sizeof(int) * rev_tab->size_a);
-	rev_tab->b = (int*)malloc(sizeof(int) * rev_tab->size_b);
+	if (!(rev_tab->a = (int*)malloc(sizeof(int) * rev_tab->size_a)))
+		exit(1);
+	if (!(rev_tab->b = (int*)malloc(sizeof(int) * rev_tab->size_b)))
+		exit(1);
 	size_a = rev_tab->size_a;
 	size_b = rev_tab->size_b;
 	while (s_a)
@@ -46,7 +48,8 @@ void	ft_free_tabs(t_rev_tab *rev_tab)
 void	ft_sdl_initialize(t_visu *visu, t_rect **rects, t_stacks *stacks)
 {
 	visu->size_list = ft_lst_size(*stacks->s_a);
-	*rects = (t_rect*)malloc(sizeof(t_rect) * visu->size_list);
+	if (!(*rects = (t_rect*)malloc(sizeof(t_rect) * visu->size_list)))
+		exit(1);
 	SDL_Init(SDL_INIT_VIDEO);
 	visu->window = SDL_CreateWindow("push_swap",
 					SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,

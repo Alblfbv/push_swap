@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 19:02:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/06 14:46:27 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/06 18:25:08 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int			ft_opti_3_a(t_stacks *stacks, t_struct *data)
 {
 	int	*tab;
 
-	tab = (int*)malloc(sizeof(int) * 3);
+	if (!(tab = (int*)malloc(sizeof(int) * 3)))
+		exit(1);
 	tab[0] = *(int*)(*stacks->s_a)->content;
 	tab[1] = *(int*)(*stacks->s_a)->next->content;
 	tab[2] = *(int*)(*stacks->s_a)->next->next->content;

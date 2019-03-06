@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 13:22:25 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/06 14:28:48 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/06 18:17:37 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 
 static void	ft_init_stacks(t_stacks *stacks)
 {
-	stacks->s_a = (t_list**)malloc(sizeof(t_list*));
+	if (!(stacks->s_a = (t_list**)malloc(sizeof(t_list*))))
+		exit(1);
 	*stacks->s_a = NULL;
-	stacks->s_b = (t_list**)malloc(sizeof(t_list*));
+	if (!(stacks->s_b = (t_list**)malloc(sizeof(t_list*))))
+		exit(1);
 	*stacks->s_b = NULL;
-	stacks->instruct = (t_list**)malloc(sizeof(t_list*));
+	if (!(stacks->instruct = (t_list**)malloc(sizeof(t_list*))))
+		exit(1);
 	*stacks->instruct = NULL;
 }
 
