@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 14:42:08 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 17:23:06 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/06 16:21:05 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	ft_is_sorted(t_list *stack_a, t_list *stack_b)
 		ft_printf("KO\n");
 		return ;
 	}
-	while (stack_a->next->next != NULL)
+	while (stack_a->next != NULL)
 	{
 		if (*(int*)stack_a->content > *(int*)stack_a->next->content)
 		{
@@ -53,11 +53,16 @@ static void	ft_is_sorted(t_list *stack_a, t_list *stack_b)
 
 void		ft_classic_checker(t_stacks *stacks, int argc, char **argv)
 {
-	if (ft_stack_create(stacks->s_a, argv + 1, argc - 1) == -1)
+	int	flag;
+
+	flag = 0;
+	if (!ft_stack_create(stacks->s_a, argv + 1, argc - 1, &flag))
 	{
 		ft_putstr_fd("Error\n", 2);
 		return ;
 	}
+	if (flag == 1)
+		return ;
 	if (!(ft_store_instructions(stacks->instruct)))
 	{
 		ft_putstr_fd("Error\n", 2);

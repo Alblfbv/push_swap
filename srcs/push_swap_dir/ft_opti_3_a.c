@@ -6,13 +6,13 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 19:02:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 20:13:19 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/06 14:46:27 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_opti_end_a(t_stacks *stacks, int *tab)
+static void	ft_opti_end_a(t_stacks *stacks, int *tab)
 {
 	if (tab[0] > tab[1] && tab[1] > tab[2])
 	{
@@ -30,7 +30,7 @@ void	ft_opti_end_a(t_stacks *stacks, int *tab)
 	}
 }
 
-void	ft_opti_sub_a(t_stacks *stacks, int *tab)
+static int	ft_opti_sub_a1(t_stacks *stacks, int *tab)
 {
 	if (tab[0] > tab[1] && tab[1] > tab[2])
 	{
@@ -40,15 +40,22 @@ void	ft_opti_sub_a(t_stacks *stacks, int *tab)
 		ft_inst_rev_rot_a(stacks);
 		ft_inst_swap_a(stacks);
 		ft_inst_push_a(stacks);
+		return (1);
 	}
-	else if (tab[0] > tab[1] && tab[1] < tab[2] && tab[0] > tab[2])
+	if (tab[0] > tab[1] && tab[1] < tab[2] && tab[0] > tab[2])
 	{
 		ft_inst_swap_a(stacks);
 		ft_inst_push_b(stacks);
 		ft_inst_swap_a(stacks);
 		ft_inst_push_a(stacks);
+		return (1);
 	}
-	else if (tab[0] < tab[1] && tab[0] > tab[2] && tab[1] > tab[2])
+	return (0);
+}
+
+static void	ft_opti_sub_a2(t_stacks *stacks, int *tab)
+{
+	if (tab[0] < tab[1] && tab[0] > tab[2] && tab[1] > tab[2])
 	{
 		ft_inst_rot_a(stacks);
 		ft_inst_swap_a(stacks);
@@ -64,7 +71,13 @@ void	ft_opti_sub_a(t_stacks *stacks, int *tab)
 	}
 }
 
-int		ft_opti_3_a(t_stacks *stacks, t_struct *data)
+static void	ft_opti_sub_a(t_stacks *stacks, int *tab)
+{
+	if (!ft_opti_sub_a1(stacks, tab))
+		ft_opti_sub_a2(stacks, tab);
+}
+
+int			ft_opti_3_a(t_stacks *stacks, t_struct *data)
 {
 	int	*tab;
 
@@ -87,11 +100,3 @@ int		ft_opti_3_a(t_stacks *stacks, t_struct *data)
 	free(tab);
 	return (0);
 }
-
-/*int		ft_opti_3_b(t_stacks *stacks, t_struct *data)
-{
-	if (ft_lst_size(*stacks->s_b) == 3)
-		ft_opti_end_b(t_stacks *stacks, t_struct *data);
-	else
-		ft_opti_sub_b(t_stacks *stacks, t_struct *data);
-}*/

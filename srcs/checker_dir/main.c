@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 13:22:25 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 17:16:47 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/06 14:28:48 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,11 @@ static void	ft_init_stacks(t_stacks *stacks)
 static void	ft_delete_stacks(t_stacks *stacks)
 {
 	ft_lstdel(stacks->s_a, &ft_free_int_ptr);
+	free(stacks->s_a);
 	ft_lstdel(stacks->s_b, &ft_free_int_ptr);
+	free(stacks->s_b);
 	ft_lstdel(stacks->instruct, &ft_free_int_ptr);
+	free(stacks->instruct);
 }
 
 int			main(int argc, char **argv)

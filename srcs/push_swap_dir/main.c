@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:00:17 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 17:08:56 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/06 15:39:25 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,21 @@ static void	ft_delete_stacks(t_stacks *stacks)
 int			main(int argc, char **argv)
 {
 	t_stacks	stacks;
+	int			flag;
 
 	if (argc == 1)
 		return (0);
 	ft_init_stacks(&stacks);
-	if (ft_stack_create(stacks.s_a, argv + 1, argc - 1) == -1)
+	flag = 0;
+	if (!ft_stack_create(stacks.s_a, argv + 1, argc - 1, &flag))
 	{
 		ft_delete_stacks(&stacks);
 		ft_printf("Error\n");
+		return (1);
+	}
+	if (flag == 1)
+	{
+		ft_delete_stacks(&stacks);
 		return (1);
 	}
 	ft_quick_sort(&stacks, *stacks.s_a, ft_lst_end(*stacks.s_a));

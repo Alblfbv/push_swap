@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 19:26:15 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 12:04:23 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/06 14:07:40 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,14 @@ void	ft_init_rects(t_visu *visu, t_rect **rects, t_list *s_a)
 	i = 0;
 	ft_rect_h(visu);
 	ft_visu_max(visu, s_a);
-	ft_rect_whnb(visu, rects, s_a, i);
+	if (visu->max_list == 0)
+	{
+		(*rects)->nb = *(int*)s_a->content;
+		(*rects)->rect.h = visu->small_px;
+		(*rects)->rect.w = visu->win_w / 2;
+	}
+	else
+		ft_rect_whnb(visu, rects, s_a, i);
 }
 
 void	ft_rects_success(t_visu *visu, t_rect **rects)

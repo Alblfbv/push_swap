@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 19:49:21 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/06 12:47:43 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ typedef struct		s_rev_tab
 	int				size_b;
 }					t_rev_tab;
 
-int					ft_stack_create(t_list **stack_a, char **s_str, int len);
+int					ft_stack_create(
+						t_list **stack_a, char **s_str, int len, int *flag);
 
 char				*ft_push_a(t_list **stack_a, t_list **stack_b);
 char				*ft_push_b(t_list **stack_a, t_list **stack_b);
@@ -105,6 +106,7 @@ int					ft_2_elem_b(t_stacks *stacks, t_list *end);
 t_struct			*ft_chose_pivot(t_struct *data);
 void				ft_kompressor(t_stacks *stacks);
 int					ft_opti_3_a(t_stacks *stacks, t_struct *data);
+int					ft_opti_3_b(t_stacks *stacks, t_struct *data);
 
 void				ft_inst_swap_a(t_stacks *stacks);
 void				ft_inst_swap_b(t_stacks *stacks);

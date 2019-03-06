@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:47:20 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 18:22:23 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/06 16:20:54 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	ft_check_duplicates(t_list *stack_a)
 		while (tmp != NULL)
 		{
 			if (*(int*)(tmp->content) == *(int*)(stack_a->content))
-				return (-1);
+				return (0);
 			tmp = tmp->next;
 		}
 		stack_a = stack_a->next;
@@ -58,21 +58,21 @@ static int	ft_check_duplicates(t_list *stack_a)
 	return (1);
 }
 
-static int	ft_stack_fill(t_list **stack_a, char **va_arg, int len, int *tmp)
+static int	ft_stack_fill(t_list **stack_a, char **argv, int len, int *tmp)
 {
 	char	**s_str;
 	int		j;
 
 	while (len)
 	{
-		s_str = ft_strsplit(*va_arg, ' ');
+		s_str = ft_strsplit(*argv, ' ');
 		j = 0;
 		while (s_str[j] != 0)
 		{
 			if (ft_check_int(s_str[j]) == -1)
 			{
 				ft_sstrdel(s_str, j + 1);
-				return (-1);
+				return (0);
 			}
 			*tmp = ft_atoi(s_str[j]);
 			ft_lstadd_end(stack_a, ft_lstnew(tmp, sizeof(int*)));
@@ -80,18 +80,23 @@ static int	ft_stack_fill(t_list **stack_a, char **va_arg, int len, int *tmp)
 		}
 		ft_sstrdel(s_str, j);
 		len--;
-		va_arg++;
+		argv++;
 	}
-	return (0);
+	return (1);
 }
 
-int			ft_stack_create(t_list **stack_a, char **va_arg, int len)
+int			ft_stack_create(t_list **stack_a, char **argv, int len, int *flag)
 {
 	int		tmp;
 
-	if (ft_stack_fill(stack_a, va_arg, len, &tmp) == -1)
-		return (-1);
-	if (ft_check_duplicates(*stack_a) == -1)
-		return (-1);
-	return (0);
+	if (!ft_stack_fill(stack_a, argv, len, &tmp))
+		return (0);
+	if (!(*stack_a))
+	{
+		*flag = 1;
+		return (1);
+	}
+	if (!ft_check_duplicates(*stack_a))
+		return (0);
+	return (1);
 }
