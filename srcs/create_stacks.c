@@ -6,37 +6,47 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 14:47:20 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/07 10:56:54 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/07 15:22:33 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static int	ft_check_int2(char *s, int *i, int sign)
+{
+	long long	nb;
+
+	nb = 0;
+	while (ft_isdigit(s[*i]))
+	{
+		if ((sign == 1 && nb * 10 + s[*i] - 48 > 2147483647)
+			|| (sign == -1 && nb * 10 + s[*i] - 48 > 2147483648))
+			return (0);
+		nb = nb * 10 + s[*i] - 48;
+		*i = *i + 1;
+	}
+	return (1);
+}
+
 static int	ft_check_int(char *s)
 {
 	int			i;
 	int			sign;
-	long long	nb;
 
 	i = 0;
 	sign = 1;
-	nb = 0;
 	if (s[i] == '+' || s[i] == '-')
 	{
 		if (s[i] == '-')
 			sign = -1;
 		i++;
 	}
-	while (ft_isdigit(s[i]))
-	{
-		if ((sign == 1 && nb * 10 + s[i] - 48 > 2147483647)
-			|| (sign == -1 && nb * 10 + s[i] - 48 > 2147483648))
-			return (-1);
-		nb = nb * 10 + s[i] - 48;
-		i++;
-	}
+	if (s[i] == '\0')
+		return (0);
+	if (!ft_check_int2(s, &i, sign))
+		return (0);
 	if (s[i] != '\0')
-		return (-1);
+		return (0);
 	return (1);
 }
 
@@ -65,11 +75,12 @@ static int	ft_stack_fill(t_list **stack_a, char **argv, int len, int *tmp)
 
 	while (len)
 	{
-		s_str = ft_strsplit(*argv, ' ');
+		if (!(s_str = ft_strsplit(*argv, ' ')))
+			exit(1);
 		j = 0;
 		while (s_str[j] != 0)
 		{
-			if (ft_check_int(s_str[j]) == -1)
+			if (!(ft_check_int(s_str[j])))
 			{
 				ft_sstrdel(s_str, j + 1);
 				return (0);
