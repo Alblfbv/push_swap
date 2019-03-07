@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:32:41 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 14:52:33 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/07 10:37:19 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	ft_failure(t_list *s_a, t_list *s_b, t_rect *rects, t_visu *visu)
 	{
 		while (SDL_PollEvent(&(visu->event)))
 		{
-			if (visu->event.type == SDL_KEYDOWN &&
-				visu->event.key.keysym.sym == SDLK_ESCAPE)
+			if (visu->event.type == SDL_KEYDOWN
+				&& visu->event.key.keysym.sym == SDLK_ESCAPE)
 				run = 0;
 		}
 		ft_clear_fail_1(visu);
@@ -51,8 +51,8 @@ void	ft_success(t_list *s_a, t_list *s_b, t_rect *rects, t_visu *visu)
 	{
 		while (SDL_PollEvent(&(visu->event)))
 		{
-			if (visu->event.type == SDL_KEYDOWN &&
-				visu->event.key.keysym.sym == SDLK_ESCAPE)
+			if (visu->event.type == SDL_KEYDOWN
+				&& visu->event.key.keysym.sym == SDLK_ESCAPE)
 				run = 0;
 		}
 		ft_clear_success_1(visu);

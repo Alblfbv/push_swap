@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 19:37:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/06 12:02:11 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/07 10:57:17 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void		ft_init_data(t_stacks *stacks, t_struct *data, t_list *end)
 	data->end_start = 0;
 	data->med_flag = 0;
 	data->end = end;
-	if (data->end == ft_lst_end(*(stacks->s_a)) ||
-		data->end == ft_lst_end(*(stacks->s_b)))
+	if (data->end == ft_lst_end(*(stacks->s_a))
+		|| data->end == ft_lst_end(*(stacks->s_b)))
 		data->end_null = 1;
 	else
 		data->end_null = 0;

@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 13:57:34 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 14:03:16 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/07 10:55:00 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int			ft_lst_max_start(t_stacks *stacks, t_struct *data)
 		return (0);
 	}
 	tmp = (*stacks->s_b)->next;
-	while (tmp != data->end &&
-		*(int*)(*stacks->s_b)->content > *(int*)tmp->content)
+	while (tmp != data->end
+			&& *(int*)(*stacks->s_b)->content > *(int*)tmp->content)
 		tmp = tmp->next;
-	if (tmp == data->end &&
-		*(int*)(*stacks->s_b)->content > *(int*)data->end->content)
+	if (tmp == data->end
+		&& *(int*)(*stacks->s_b)->content > *(int*)data->end->content)
 		return (1);
 	return (0);
 }

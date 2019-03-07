@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 15:42:07 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 16:07:57 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/07 10:37:47 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ static int	ft_sdl_event(t_visu *visu)
 {
 	while (SDL_PollEvent(&(visu->event)))
 	{
-		if (visu->event.type == SDL_KEYDOWN &&
-			visu->event.key.keysym.sym == SDLK_ESCAPE)
+		if (visu->event.type == SDL_KEYDOWN
+			&& visu->event.key.keysym.sym == SDLK_ESCAPE)
 			return (0);
-		if (visu->event.type == SDL_KEYDOWN &&
-			visu->event.key.keysym.sym == SDLK_SPACE)
+		if (visu->event.type == SDL_KEYDOWN
+			&& visu->event.key.keysym.sym == SDLK_SPACE)
 			SDL_Delay(4000);
 	}
 	return (1);

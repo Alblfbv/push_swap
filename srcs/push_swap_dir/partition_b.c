@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 15:51:10 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 18:58:03 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/07 10:54:35 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,19 @@ int			ft_only_under_med(t_list *s_b, t_struct *data)
 
 static int	ft_opti_med(t_stacks *stacks, t_struct *data)
 {
-	if ((ft_lst_n_size(*stacks->s_b, data->end) >= 3 &&
-		*(int*)(*stacks->s_b)->content < *(int*)data->pivot->content &&
-		*(int*)(*stacks->s_b)->next->content >= *(int*)data->pivot->content &&
-		ft_only_under_med((*stacks->s_b)->next->next, data)))
+	if (ft_lst_n_size(*stacks->s_b, data->end) >= 3
+		&& *(int*)(*stacks->s_b)->content < *(int*)data->pivot->content
+		&& *(int*)(*stacks->s_b)->next->content >= *(int*)data->pivot->content
+		&& ft_only_under_med((*stacks->s_b)->next->next, data))
 	{
 		ft_inst_swap_b(stacks);
 		ft_inst_push_a(stacks);
 		data->med_flag = 1;
 		return (1);
 	}
-	else if ((ft_lst_n_size(*stacks->s_b, data->end) == 2 &&
-		*(int*)(*(stacks->s_b))->content < *(int*)data->pivot->content &&
-		*(int*)(*stacks->s_b)->next->content >= *(int*)data->pivot->content))
+	else if (ft_lst_n_size(*stacks->s_b, data->end) == 2
+		&& *(int*)(*(stacks->s_b))->content < *(int*)data->pivot->content
+		&& *(int*)(*stacks->s_b)->next->content >= *(int*)data->pivot->content)
 	{
 		ft_inst_swap_b(stacks);
 		ft_inst_push_a(stacks);

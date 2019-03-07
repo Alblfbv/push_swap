@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/19 15:04:30 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 13:48:18 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/07 10:50:17 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ void	ft_merge_instruct(t_list **alst, t_list *prev, t_list *elem1, char *str)
 
 int		ft_useless_inst_del(t_list **alst, t_list *prev, t_list *elem1)
 {
-	if ((ft_strequ((char*)elem1->content, "ra") &&
-		ft_strequ((char*)elem1->next->content, "rra")) ||
-		(ft_strequ((char*)elem1->content, "rra") &&
-		ft_strequ((char*)elem1->next->content, "ra")) ||
-		(ft_strequ((char*)elem1->content, "rrb") &&
-		ft_strequ((char*)elem1->next->content, "rb")) ||
-		(ft_strequ((char*)elem1->content, "rb") &&
-		ft_strequ((char*)elem1->next->content, "rrb")) ||
-		(ft_strequ((char*)elem1->content, "pb") &&
-		ft_strequ((char*)elem1->next->content, "pa")) ||
-		(ft_strequ((char*)elem1->content, "pa") &&
-		ft_strequ((char*)elem1->next->content, "pb")))
+	if ((ft_strequ((char*)elem1->content, "ra")
+			&& ft_strequ((char*)elem1->next->content, "rra"))
+		|| (ft_strequ((char*)elem1->content, "rra")
+			&& ft_strequ((char*)elem1->next->content, "ra"))
+		|| (ft_strequ((char*)elem1->content, "rrb")
+			&& ft_strequ((char*)elem1->next->content, "rb"))
+		|| (ft_strequ((char*)elem1->content, "rb")
+			&& ft_strequ((char*)elem1->next->content, "rrb"))
+		|| (ft_strequ((char*)elem1->content, "pb")
+			&& ft_strequ((char*)elem1->next->content, "pa"))
+		|| (ft_strequ((char*)elem1->content, "pa")
+			&& ft_strequ((char*)elem1->next->content, "pb")))
 	{
 		ft_del_instruct(alst, prev, elem1);
 		return (1);
@@ -59,26 +59,26 @@ int		ft_useless_inst_del(t_list **alst, t_list *prev, t_list *elem1)
 
 int		ft_double_inst_merge(t_list **alst, t_list *prev, t_list *elem1)
 {
-	if ((ft_strequ((char*)elem1->content, "rra") &&
-		ft_strequ((char*)elem1->next->content, "rrb")) ||
-		(ft_strequ((char*)elem1->content, "rrb") &&
-		ft_strequ((char*)elem1->next->content, "rra")))
+	if ((ft_strequ((char*)elem1->content, "rra")
+			&& ft_strequ((char*)elem1->next->content, "rrb"))
+		|| (ft_strequ((char*)elem1->content, "rrb")
+			&& ft_strequ((char*)elem1->next->content, "rra")))
 	{
 		ft_merge_instruct(alst, prev, elem1, "rrr");
 		return (1);
 	}
-	else if ((ft_strequ((char*)elem1->content, "ra") &&
-			ft_strequ((char*)elem1->next->content, "rb")) ||
-			(ft_strequ((char*)elem1->content, "rb") &&
-			ft_strequ((char*)elem1->next->content, "ra")))
+	else if ((ft_strequ((char*)elem1->content, "ra")
+				&& ft_strequ((char*)elem1->next->content, "rb"))
+			|| (ft_strequ((char*)elem1->content, "rb")
+				&& ft_strequ((char*)elem1->next->content, "ra")))
 	{
 		ft_merge_instruct(alst, prev, elem1, "rr");
 		return (1);
 	}
-	else if ((ft_strequ((char*)elem1->content, "sa") &&
-			ft_strequ((char*)elem1->next->content, "sb")) ||
-			(ft_strequ((char*)elem1->content, "sb") &&
-			ft_strequ((char*)elem1->next->content, "sa")))
+	else if ((ft_strequ((char*)elem1->content, "sa")
+				&& ft_strequ((char*)elem1->next->content, "sb"))
+			|| (ft_strequ((char*)elem1->content, "sb")
+				&& ft_strequ((char*)elem1->next->content, "sa")))
 	{
 		ft_merge_instruct(alst, prev, elem1, "ss");
 		return (1);

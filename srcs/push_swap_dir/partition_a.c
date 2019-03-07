@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/15 15:22:33 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/05 20:12:14 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/07 10:53:45 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,20 @@ int			ft_only_above_med(t_list *s_a, t_struct *data)
 
 static int	ft_opti_med(t_stacks *stacks, t_struct *data)
 {
-	if ((ft_lst_n_size(*stacks->s_a, data->end) > 3 &&
-		*(int*)(*(stacks->s_a))->content >= *(int*)data->pivot->content &&
-		*(int*)(*stacks->s_a)->next->content < *(int*)data->pivot->content &&
-		ft_only_above_med((*stacks->s_a)->next->next, data)))
+	if (ft_lst_n_size(*stacks->s_a, data->end) > 3
+		&& *(int*)(*(stacks->s_a))->content >= *(int*)data->pivot->content
+		&& *(int*)(*stacks->s_a)->next->content < *(int*)data->pivot->content
+		&& ft_only_above_med((*stacks->s_a)->next->next, data))
 	{
 		ft_inst_swap_a(stacks);
 		ft_inst_push_b(stacks);
 		data->med_flag = 1;
 		return (1);
 	}
-	else if ((ft_lst_n_size(*stacks->s_a, data->end) == 2 &&
-		(!ft_lst_is_sorted((*stacks->s_a)->next)) &&
-		*(int*)(*(stacks->s_a))->content >= *(int*)data->pivot->content &&
-		*(int*)(*stacks->s_a)->next->content < *(int*)data->pivot->content))
+	else if (ft_lst_n_size(*stacks->s_a, data->end) == 2
+		&& (!ft_lst_is_sorted((*stacks->s_a)->next))
+		&& *(int*)(*(stacks->s_a))->content >= *(int*)data->pivot->content
+		&& *(int*)(*stacks->s_a)->next->content < *(int*)data->pivot->content)
 	{
 		ft_inst_swap_a(stacks);
 		ft_inst_push_b(stacks);
