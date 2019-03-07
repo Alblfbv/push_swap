@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 15:14:05 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/07 10:16:41 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/07 12:45:55 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ static int	ft_check_line(char *line)
 int			ft_store_instructions(t_list **instructions)
 {
 	char	*line;
+	int		ret;
 
-	while (get_next_line(0, &line) == 1)
+	while ((ret = get_next_line(0, &line)) == 1)
 	{
 		if (ft_check_line(line) == -1)
 		{
@@ -43,6 +44,9 @@ int			ft_store_instructions(t_list **instructions)
 		ft_lstadd_end(instructions, ft_lstnew(line, sizeof(char*)));
 		free(line);
 	}
-	free(line);
+	if (ret == -1)
+		return (0);
+	if (ret == 0)
+		free(line);
 	return (1);
 }

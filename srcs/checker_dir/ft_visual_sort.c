@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 15:42:07 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/07 10:37:47 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/07 12:37:48 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ int			ft_process_visual_sort(t_stacks stacks, t_rect *rects, t_visu *visu)
 	while (*stacks.instruct)
 	{
 		if (!ft_sdl_event(visu))
+		{
+			ft_del_fptr(&instruct);
 			return (0);
+		}
 		if (visu->size_list <= 250)
 			SDL_Delay(5000 / visu->size_list);
 		ft_display(stacks, rects, visu, &rev_tab);

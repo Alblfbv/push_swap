@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 11:54:45 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/06 14:41:51 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/07 12:38:16 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ void		ft_visual_checker(t_stacks *stacks, int argc, char **argv)
 	}
 	ft_sdl_initialize(&visu, &rects, stacks);
 	if (!ft_process_visual_sort(*stacks, rects, &visu))
+	{
+		ft_sdl_end(&visu);
 		return ;
+	}
 	ft_is_sorted(*(stacks->s_a), *(stacks->s_b), rects, &visu);
 	ft_sdl_end(&visu);
 }
