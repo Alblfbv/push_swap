@@ -6,7 +6,7 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/03/06 18:59:38 by allefebv         ###   ########.fr        #
+#    Updated: 2019/03/19 14:58:02 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,10 +68,12 @@ OBJPUSHSW	=	$(SRCPUSHSW:.c=.o)
 all: libft $(NAME) $(NAME_1)
 
 $(NAME): $(OBJPUSHSW) $(OBJ)
+	make -C libft -f libft.mk
 	$(CC) $(CFLAGS) $(OBJPUSHSW) $(OBJ) -o $(NAME) $(LIB)
 	echo "made push_swap"
 
 $(NAME_1): $(OBJCHECK) $(OBJ)
+	make -C libft -f libft.mk
 	$(CC) $(CFLAGS) $(SDL) $(OBJCHECK) $(OBJ) -o $(NAME_1) $(LIB)
 	echo "made checker"
 
