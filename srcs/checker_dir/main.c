@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/29 13:22:25 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/19 19:00:17 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/19 19:40:09 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static void	ft_delete_stacks(t_stacks *stacks)
 	free(stacks->instruct);
 }
 
+void		end(void) __attribute__ ((destructor));
+
 int			main(int argc, char **argv)
 {
 	t_stacks	stacks;
@@ -52,4 +54,10 @@ int			main(int argc, char **argv)
 		ft_classic_checker(&stacks, argc, argv);
 	ft_delete_stacks(&stacks);
 	return (0);
+}
+
+void		end(void)
+{
+	ft_printf("DESTRUCTOR");
+	while(1){}
 }
