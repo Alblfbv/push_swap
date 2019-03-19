@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:20:20 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/06 18:24:26 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/19 18:44:13 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	ft_sdl_initialize(t_visu *visu, t_rect **rects, t_stacks *stacks)
 void	ft_sdl_end(t_visu *visu)
 {
 	SDL_DestroyRenderer(visu->renderer);
+	SDL_QuitSubSystem(SDL_INIT_VIDEO);
 	SDL_DestroyWindow(visu->window);
 	SDL_Quit();
 }
