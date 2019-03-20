@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/19 16:38:23 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/03/20 15:21:14 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 # define PUSH_SWAP_H
 
 # define INSTRUCT 11
-# define MIN_QS_SIZE 10
 
-# include "../libft/includes/libft.h"
+# include "libft.h"
 # include <stdlib.h>
 # include <SDL2/SDL.h>
 

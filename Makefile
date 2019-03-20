@@ -6,7 +6,7 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/03/19 18:26:39 by allefebv         ###   ########.fr        #
+#    Updated: 2019/03/20 15:19:19 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,9 @@ NAME		=	push_swap
 NAME_1		=	checker
 LIB			=	./libft/libft.a
 INCLUDES	=	./includes
+INCLUDES_L	=	./libft/includes
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -I $(INCLUDES)
+CFLAGS		=	-Wall -Wextra -I $(INCLUDES) -I $(INCLUDES_L)
 SDL			=	-F/Library/Frameworks -framework SDL2
 
 SRC			=	srcs/create_stacks.c					\
