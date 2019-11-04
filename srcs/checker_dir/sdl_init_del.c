@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/05 14:20:20 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/20 15:15:45 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/11/04 12:58:07 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	ft_sdl_initialize(t_visu *visu, t_rect **rects, t_stacks *stacks)
 	SDL_Init(SDL_INIT_VIDEO);
 	visu->window = SDL_CreateWindow("push_swap",
 									SDL_WINDOWPOS_CENTERED,
-									SDL_WINDOWPOS_CENTERED, 0, 0,
-									SDL_WINDOW_FULLSCREEN_DESKTOP);
+									SDL_WINDOWPOS_CENTERED, 1000, 600,
+									SDL_WINDOW_OPENGL);
 	visu->renderer = SDL_CreateRenderer(visu->window, -1,
 					SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	SDL_GetWindowSize(visu->window, &(visu->win_w), &(visu->win_h));

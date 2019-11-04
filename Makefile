@@ -6,7 +6,7 @@
 #    By: allefebv <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/31 18:19:37 by allefebv          #+#    #+#              #
-#    Updated: 2019/03/20 15:19:19 by allefebv         ###   ########.fr        #
+#    Updated: 2019/11/04 13:53:37 by allefebv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ LIB			=	./libft/libft.a
 INCLUDES	=	./includes
 INCLUDES_L	=	./libft/includes
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -I $(INCLUDES) -I $(INCLUDES_L)
-SDL			=	-F/Library/Frameworks -framework SDL2
+SDL_INCLUDE	=	`sdl2-config --cflags`
+SDL_EXEC	=	`sdl2-config --libs`
+CFLAGS		=	-Wall -Wextra -I $(INCLUDES) -I $(INCLUDES_L) $(SDL_INCLUDE)
 
 SRC			=	srcs/create_stacks.c					\
 				srcs/push_a.c							\
@@ -75,7 +76,7 @@ $(NAME): $(OBJPUSHSW) $(OBJ)
 
 $(NAME_1): $(OBJCHECK) $(OBJ)
 	make -C libft -f libft.mk
-	$(CC) $(CFLAGS) $(SDL) $(OBJCHECK) $(OBJ) -o $(NAME_1) $(LIB)
+	$(CC) $(CFLAGS) $(SDL_EXEC) $(OBJCHECK) $(OBJ) -o $(NAME_1) $(LIB)
 	echo "made checker"
 
 libft:

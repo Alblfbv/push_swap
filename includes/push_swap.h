@@ -6,7 +6,7 @@
 /*   By: allefebv <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/01 23:02:37 by allefebv          #+#    #+#             */
-/*   Updated: 2019/03/20 15:21:14 by allefebv         ###   ########.fr       */
+/*   Updated: 2019/11/04 11:01:07 by allefebv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # include "libft.h"
 # include <stdlib.h>
-# include <SDL2/SDL.h>
+# include <SDL.h>
 
 typedef struct		s_struct
 {
