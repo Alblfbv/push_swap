@@ -1,6 +1,8 @@
 # push_swap
 42 project push_swap
 
+<img src="https://github.com/Alblfbv/push_swap/blob/master/media/push_swap_visu.gif" width="80%">
+
 ## Description
 
 ### push_swap program 
